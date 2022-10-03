@@ -8,7 +8,12 @@ function App() {
     })
   }, [])
 
-  return <h1>Brownie</h1>
+  return (
+    <>
+      <h1>Brownie</h1>
+      <h2>by rafaelalma</h2>
+    </>
+  )
 }
 
 export default App
