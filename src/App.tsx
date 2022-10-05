@@ -15,7 +15,7 @@ import LocalHospitalRoundedIcon from '@mui/icons-material/LocalHospitalRounded'
 import ArticleRoundedIcon from '@mui/icons-material/ArticleRounded'
 
 import DogView from './dogs/DogView'
-import HomeView from './HomeView'
+import HomeView from './home/HomeView'
 
 export default function App() {
   const location = useLocation()
