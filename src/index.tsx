@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import CssBaseline from '@mui/material/CssBaseline'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import App from './App'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
@@ -11,11 +12,15 @@ import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
 
+const queryClient = new QueryClient()
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <CssBaseline />
-    <App />
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
   </React.StrictMode>
 )
 

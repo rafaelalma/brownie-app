@@ -1,12 +1,31 @@
 import { ReactElement } from 'react'
+import { useQuery } from '@tanstack/react-query'
 
 import DogGrid from './DogGrid'
-import { Dog } from './types'
+import dogService from './service'
+import Typography from '@mui/material/Typography'
 
-type Props = {
-  dogs: Dog[]
-}
+export default function DogView(): ReactElement {
+  const dogs = useQuery(['dogs'], dogService.getAll)
 
-export default function DogView({ dogs }: Props): ReactElement {
-  return <DogGrid dogs={dogs} />
+  if (dogs.data) {
+    return <DogGrid dogs={dogs.data} />
+  }
+  if (dogs.error) {
+    return (
+      <Typography
+        variant="h4"
+        textAlign="center"
+        padding={2}
+      >{`An error has occurred: ${
+        dogs.error instanceof Error ? dogs.error.message : ''
+      }`}</Typography>
+    )
+  }
+
+  return (
+    <Typography variant="h4" textAlign="center" padding={2}>
+      Loading...
+    </Typography>
+  )
 }
