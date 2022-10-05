@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 
-import DogList from './DogList'
+import DogGrid from './DogGrid'
 import { Dog } from './types'
 
 type Props = {
@@ -8,5 +8,5 @@ type Props = {
 }
 
 export default function DogView({ dogs }: Props): ReactElement {
-  return <DogList dogs={dogs} />
+  return <DogGrid dogs={dogs} />
 }

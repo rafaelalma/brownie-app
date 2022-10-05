@@ -5,7 +5,7 @@ import DogView from './dogs/DogView'
 import dogService from './services/dogs'
 import { Dog } from './dogs/types'
 
-function App() {
+export default function App() {
   const [dogs, setDogs] = useState<Dog[] | undefined>()
 
   useEffect(() => {
@@ -17,11 +17,10 @@ function App() {
 
   return (
     <>
-      <Typography variant="h1">Brownie</Typography>
-      <Typography variant="h2">by rafaelalma</Typography>
+      <Typography variant="h1" fontWeight={500} textAlign="center" padding={2}>
+        Brownie
+      </Typography>
       {dogs && <DogView dogs={dogs} />}
     </>
   )
 }
-
-export default App
