@@ -11,6 +11,7 @@ export default function DogView(): ReactElement {
   if (dogs.data) {
     return <DogGrid dogs={dogs.data} />
   }
+
   if (dogs.error) {
     return (
       <Typography
