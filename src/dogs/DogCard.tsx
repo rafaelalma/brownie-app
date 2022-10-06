@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import Card from '@mui/material/Card'
 import CardActionArea from '@mui/material/CardActionArea'
 import CardContent from '@mui/material/CardContent'
@@ -8,42 +9,48 @@ import Stack from '@mui/material/Stack'
 import Chip from '@mui/material/Chip'
 import BorderAllRoundedIcon from '@mui/icons-material/BorderAllRounded'
 
-import { Dog } from './types'
+import { Dog } from './dogTypes'
 
 type Props = {
   dog: Dog
 }
 
 export default function DogCard({ dog }: Props) {
+  const navigate = useNavigate()
+
+  const { id, image, name, kennel } = dog
+
+  const handleCardClick = () => {
+    navigate(id)
+  }
+
   return (
     <Card>
-      <CardActionArea>
-        {dog.image ? (
-          <CardMedia
-            component="img"
-            height="358"
-            image={dog.image}
-            alt={dog.name}
-          />
+      <CardActionArea onClick={handleCardClick}>
+        {image ? (
+          <CardMedia component="img" height="358" image={image} alt={name} />
         ) : (
           <Skeleton variant="rectangular" height={358} />
         )}
+        <CardContent>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Typography variant="h5" component="div">
+              {name}
+            </Typography>
+            {kennel && (
+              <Chip
+                label={kennel}
+                color="primary"
+                icon={<BorderAllRoundedIcon />}
+              />
+            )}
+          </Stack>
+        </CardContent>
       </CardActionArea>
-      <CardContent>
-        <Stack direction="row" justifyContent="space-between">
-          <Typography variant="h5" component="div">
-            {dog.name}
-          </Typography>
-          {dog.kennel && (
-            <Chip
-              label={dog.kennel}
-              color="primary"
-              icon={<BorderAllRoundedIcon />}
-              onClick={() => {}}
-            />
-          )}
-        </Stack>
-      </CardContent>
     </Card>
   )
 }

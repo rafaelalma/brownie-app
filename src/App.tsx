@@ -14,22 +14,27 @@ import BorderAllRoundedIcon from '@mui/icons-material/BorderAllRounded'
 import LocalHospitalRoundedIcon from '@mui/icons-material/LocalHospitalRounded'
 import ArticleRoundedIcon from '@mui/icons-material/ArticleRounded'
 
-import DogView from './dogs/DogView'
 import HomeView from './home/HomeView'
+import DogView from './dogs/DogView'
+import DogGrid from './dogs/DogGrid'
+import DogDetail from './dogs/DogDetail'
 
 export default function App() {
   const location = useLocation()
   const navigate = useNavigate()
 
   const pathnameParts = location.pathname.split('/')
-  const lastPathnamePart = pathnameParts[pathnameParts.length - 1]
+  const lastPathnamePart = pathnameParts[1]
 
   return (
     <>
       <Routes>
         <Route path="/" element={<Outlet />}>
           <Route index element={<HomeView />} />
-          <Route path="dogs" element={<DogView />} />
+          <Route path="dogs" element={<DogView />}>
+            <Route index element={<DogGrid />} />
+            <Route path=":id" element={<DogDetail />} />
+          </Route>
           <Route path="kennels" element={null} />
           <Route path="treatments" element={null} />
           <Route path="reports" element={null} />
