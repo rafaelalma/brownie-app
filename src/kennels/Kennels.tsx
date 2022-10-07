@@ -5,6 +5,7 @@ import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 import dogService from '../dogService'
@@ -21,6 +22,10 @@ const groupBy = (array: any[], field: string) => {
   }, {})
 }
 
+const comparator = (a: string, b: string) => {
+  return a.toString().localeCompare(b.toString(), 'en', { numeric: true })
+}
+
 export default function Kennels(): ReactElement {
   const dogs = useQuery(['dogs'], dogService.getAll)
 
@@ -31,18 +36,25 @@ export default function Kennels(): ReactElement {
 
     return (
       <Container>
-        {entries.map((entry) => (
-          <Accordion key={entry[0]}>
-            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-              <Typography variant="body1">{entry[0]}</Typography>
-            </AccordionSummary>
-            {entry[1].map((dog) => (
-              <AccordionDetails key={dog.id}>
-                <Typography variant="body2">{dog.name}</Typography>
-              </AccordionDetails>
-            ))}
-          </Accordion>
-        ))}
+        {entries
+          .sort((a, b) => comparator(a[0], b[0]))
+          .map((entry) => (
+            <Accordion key={entry[0]} defaultExpanded>
+              <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                <Typography variant="body1" fontWeight={500}>
+                  {entry[0]}
+                </Typography>
+              </AccordionSummary>
+              {entry[1].map((dog) => (
+                <AccordionDetails key={dog.id}>
+                  <Typography variant="body2" textAlign="center">
+                    {dog.name}
+                  </Typography>
+                </AccordionDetails>
+              ))}
+            </Accordion>
+          ))}
+        <Box height={70} />
       </Container>
     )
   }
