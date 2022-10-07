@@ -11,6 +11,7 @@ import ListItemText from '@mui/material/ListItemText'
 import Stack from '@mui/material/Stack'
 import Chip from '@mui/material/Chip'
 import Link from '@mui/material/Link'
+import Box from '@mui/material/Box'
 import BorderAllRoundedIcon from '@mui/icons-material/BorderAllRounded'
 import MaleRoundedIcon from '@mui/icons-material/MaleRounded'
 import FemaleRoundedIcon from '@mui/icons-material/FemaleRounded'
@@ -18,9 +19,9 @@ import CakeRoundedIcon from '@mui/icons-material/CakeRounded'
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
 
-import dogService from './dogService'
-import dogHelper from './dogHelper'
-import { Sex } from './dogTypes'
+import dogService from '../dogService'
+import dogHelper from '../dogHelper'
+import { Sex } from '../dogTypes'
 
 export default function DogDetail() {
   const params = useParams()
@@ -87,7 +88,7 @@ export default function DogDetail() {
           </ListItem>
           {size && (
             <ListItem>
-              <ListItemText>Tamaño: {dogHelper.getSizeText(size)}</ListItemText>
+              <ListItemText>{dogHelper.getSizeText(size)}</ListItemText>
             </ListItem>
           )}
           {birthDate && (
@@ -138,7 +139,7 @@ export default function DogDetail() {
         </List>
         {comments && (
           <Typography variant="body1" padding={2}>
-            {comments}
+            <strong>Comentarios:</strong> {comments}
           </Typography>
         )}
         {youtubeUrl && (
@@ -152,6 +153,7 @@ export default function DogDetail() {
             YouTube
           </Link>
         )}
+        <Box height={70} />
       </Container>
     )
   }

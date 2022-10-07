@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import Grid from '@mui/material/Unstable_Grid2'
 import Typography from '@mui/material/Typography'
 
-import dogService from './dogService'
+import dogService from '../dogService'
 import DogCard from './DogCard'
 
 export default function DogGrid(): ReactElement {
