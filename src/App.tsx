@@ -18,6 +18,8 @@ import HomeView from './home/HomeView'
 import DogView from './dogs/DogView'
 import DogGrid from './dogs/DogGrid'
 import DogDetail from './dogs/DogDetail'
+import KennelView from './kennels/KennelView'
+import Kennels from './kennels/Kennels'
 
 export default function App() {
   const location = useLocation()
@@ -35,7 +37,9 @@ export default function App() {
             <Route index element={<DogGrid />} />
             <Route path=":id" element={<DogDetail />} />
           </Route>
-          <Route path="kennels" element={null} />
+          <Route path="kennels" element={<KennelView />}>
+            <Route index element={<Kennels />} />
+          </Route>
           <Route path="treatments" element={null} />
           <Route path="reports" element={null} />
           <Route path="*" element={null} />
