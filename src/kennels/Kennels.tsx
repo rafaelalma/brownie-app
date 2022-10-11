@@ -62,7 +62,9 @@ export default function Kennels(): ReactElement {
   if (dogs.error) {
     return (
       <Typography
-        variant="h4"
+        variant="body1"
+        fontSize={24}
+        fontWeight={500}
         textAlign="center"
         padding={2}
       >{`An error has occurred: ${
@@ -72,8 +74,14 @@ export default function Kennels(): ReactElement {
   }
 
   return (
-    <Typography variant="h4" textAlign="center" padding={2}>
-      Loading...
+    <Typography
+      variant="body1"
+      fontSize={24}
+      fontWeight={500}
+      textAlign="center"
+      padding={2}
+    >
+      Cargando...
     </Typography>
   )
 }

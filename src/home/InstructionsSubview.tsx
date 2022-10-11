@@ -666,6 +666,7 @@ export default function InstructionsSubview() {
             variant="body2"
             fontWeight={500}
             underline="none"
+            target="_blank"
           >
             Youtube Brownie
           </Link>
@@ -724,6 +725,7 @@ export default function InstructionsSubview() {
             variant="body2"
             fontWeight={500}
             underline="none"
+            target="_blank"
           >
             @cachorrosprotemlg
           </Link>
@@ -740,6 +742,7 @@ export default function InstructionsSubview() {
             variant="body2"
             fontWeight={500}
             underline="none"
+            target="_blank"
           >
             Cachorros SPAPM
           </Link>

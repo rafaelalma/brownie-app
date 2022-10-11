@@ -20,6 +20,8 @@ import DogGrid from './dogs/DogGrid'
 import DogDetail from './dogs/DogDetail'
 import KennelView from './kennels/KennelView'
 import Kennels from './kennels/Kennels'
+import UnderConstructionView from './UnderContructionView'
+import NotFoundView from './NotFoundView'
 
 export default function App() {
   const location = useLocation()
@@ -40,9 +42,9 @@ export default function App() {
           <Route path="kennels" element={<KennelView />}>
             <Route index element={<Kennels />} />
           </Route>
-          <Route path="treatments" element={null} />
-          <Route path="reports" element={null} />
-          <Route path="*" element={null} />
+          <Route path="treatments" element={<UnderConstructionView />} />
+          <Route path="reports" element={<UnderConstructionView />} />
+          <Route path="*" element={<NotFoundView />} />
         </Route>
       </Routes>
       <Paper
