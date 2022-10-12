@@ -1,5 +1,102 @@
-import { ReactElement } from 'react'
+import { ReactElement, useState } from 'react'
+import FormControl from '@mui/material/FormControl'
+import InputLabel from '@mui/material/InputLabel'
+import OutlinedInput from '@mui/material/OutlinedInput'
+import InputAdornment from '@mui/material/InputAdornment'
+import IconButton from '@mui/material/IconButton'
+import Button from '@mui/material/Button'
+import Divider from '@mui/material/Divider'
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded'
+import PasswordRoundedIcon from '@mui/icons-material/PasswordRounded'
+import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded'
+import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded'
 
 export default function LoginForm(): ReactElement {
-  return <></>
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+
+  const handleUsernameChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
+    setUsername(event.target.value)
+  }
+
+  const handlePasswordChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
+    setPassword(event.target.value)
+  }
+
+  const handleShowPasswordClick = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword)
+  }
+
+  const handleShowPasswordMouseDown = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    event.preventDefault()
+  }
+
+  const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    console.log(`login with username: ${username} and password: ${password}`)
+  }
+
+  return (
+    <form onSubmit={handleLogin} style={{ padding: '16px' }}>
+      <FormControl variant="outlined" fullWidth margin="normal">
+        <InputLabel htmlFor="username">Usuario</InputLabel>
+        <OutlinedInput
+          id="username"
+          label="Usuario"
+          value={username}
+          onChange={handleUsernameChange}
+          required
+          startAdornment={
+            <InputAdornment position="start">
+              <AccountCircleRoundedIcon />
+            </InputAdornment>
+          }
+        />
+      </FormControl>
+      <FormControl variant="outlined" fullWidth margin="normal">
+        <InputLabel htmlFor="password">Contraseña</InputLabel>
+        <OutlinedInput
+          id="password"
+          label="Contraseña"
+          type={showPassword ? 'text' : 'password'}
+          value={password}
+          onChange={handlePasswordChange}
+          required
+          startAdornment={
+            <InputAdornment position="start">
+              <PasswordRoundedIcon />
+            </InputAdornment>
+          }
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleShowPasswordClick}
+                onMouseDown={handleShowPasswordMouseDown}
+                edge="end"
+              >
+                {showPassword ? (
+                  <VisibilityOffRoundedIcon />
+                ) : (
+                  <VisibilityRoundedIcon />
+                )}
+              </IconButton>
+            </InputAdornment>
+          }
+        />
+        <Divider sx={{ margin: 2 }} />
+        <Button type="submit" variant="contained">
+          Iniciar sesión
+        </Button>
+      </FormControl>
+    </form>
+  )
 }
