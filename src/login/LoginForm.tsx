@@ -11,10 +11,14 @@ import PasswordRoundedIcon from '@mui/icons-material/PasswordRounded'
 import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded'
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded'
 
+import loginService from '../services/loginService'
+import { User } from '../types/userType'
+
 export default function LoginForm(): ReactElement {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const [user, setUser] = useState<User | null>(null)
 
   const handleUsernameChange = (
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
@@ -38,10 +42,23 @@ export default function LoginForm(): ReactElement {
     event.preventDefault()
   }
 
-  const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    console.log(`login with username: ${username} and password: ${password}`)
+    try {
+      const user = await loginService.login({
+        username,
+        password,
+      })
+
+      console.log(user)
+
+      setUser(user)
+      setUsername('')
+      setPassword('')
+    } catch (error) {
+      if (error instanceof Error) console.error(error.message)
+    }
   }
 
   return (
