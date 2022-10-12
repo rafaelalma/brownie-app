@@ -1,6 +1,13 @@
-import { createContext, ReactNode, useContext, useState } from 'react'
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from 'react'
 
 import { User } from '../types/userType'
+import dogService from '../services/dogService'
 
 const AuthenticationContext = createContext<
   | {
@@ -12,6 +19,15 @@ const AuthenticationContext = createContext<
 
 function AuthenticationProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
+
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem('loggedBrownieUser')
+    if (loggedUserJSON) {
+      const loggedUser: User = JSON.parse(loggedUserJSON)
+      setUser(loggedUser)
+      dogService.setToken(loggedUser.token)
+    }
+  }, [])
 
   const value = { user, setUser }
   return (
