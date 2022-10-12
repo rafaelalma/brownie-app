@@ -8,7 +8,7 @@ import Box from '@mui/material/Box'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 import dogService from '../services/dogService'
-import { Dog } from '../types/dogTypes'
+import { Dog } from '../types/dogType'
 
 const groupBy = (array: any[], field: string) => {
   return array.reduce((result, currentValue) => {

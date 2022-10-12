@@ -21,7 +21,7 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
 
 import dogService from '../services/dogService'
 import dogHelper from '../helpers/dogHelper'
-import { Sex } from '../types/dogTypes'
+import { Sex } from '../types/dogType'
 
 export default function DogDetail(): ReactElement {
   const params = useParams()

@@ -14,7 +14,6 @@ export enum Sex {
 
 export interface Dog {
   id: string
-  dateAdded: Date
   name: string
   kennel: string | null
   birthDate: Date | null

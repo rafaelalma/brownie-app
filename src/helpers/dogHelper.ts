@@ -1,4 +1,4 @@
-import { Size } from '../types/dogTypes'
+import { Size } from '../types/dogType'
 
 const getSizeText = (size: Size) => {
   switch (size) {

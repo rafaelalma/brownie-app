@@ -10,7 +10,7 @@ import Stack from '@mui/material/Stack'
 import Chip from '@mui/material/Chip'
 import BorderAllRoundedIcon from '@mui/icons-material/BorderAllRounded'
 
-import { Dog } from '../types/dogTypes'
+import { Dog } from '../types/dogType'
 
 type Props = {
   dog: Dog

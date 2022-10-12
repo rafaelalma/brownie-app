@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { Dog } from '../types/dogTypes'
+import { Dog } from '../types/dogType'
 
 const baseUrl = '/api/dogs'
 
