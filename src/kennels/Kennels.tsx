@@ -8,8 +8,8 @@ import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
-import dogService from '../dogService'
-import { Dog } from '../dogTypes'
+import dogService from '../services/dogService'
+import { Dog } from '../types/dogTypes'
 
 const groupBy = (array: any[], field: string) => {
   return array.reduce((result, currentValue) => {

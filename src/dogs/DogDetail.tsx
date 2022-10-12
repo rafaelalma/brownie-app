@@ -19,9 +19,9 @@ import CakeRoundedIcon from '@mui/icons-material/CakeRounded'
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
 
-import dogService from '../dogService'
-import dogHelper from '../dogHelper'
-import { Sex } from '../dogTypes'
+import dogService from '../services/dogService'
+import dogHelper from '../helpers/dogHelper'
+import { Sex } from '../types/dogTypes'
 
 export default function DogDetail() {
   const params = useParams()

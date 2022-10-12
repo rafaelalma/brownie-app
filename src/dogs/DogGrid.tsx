@@ -4,7 +4,7 @@ import Grid from '@mui/material/Unstable_Grid2'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 
-import dogService from '../dogService'
+import dogService from '../services/dogService'
 import DogCard from './DogCard'
 
 const comparator = (a: string, b: string) => {

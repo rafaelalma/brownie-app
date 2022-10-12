@@ -20,8 +20,8 @@ import DogGrid from './dogs/DogGrid'
 import DogDetail from './dogs/DogDetail'
 import KennelView from './kennels/KennelView'
 import Kennels from './kennels/Kennels'
-import UnderConstructionView from './UnderContructionView'
-import NotFoundView from './NotFoundView'
+import UnderConstructionView from './misc/UnderContructionView'
+import NotFoundView from './misc/NotFoundView'
 
 export default function App() {
   const location = useLocation()
