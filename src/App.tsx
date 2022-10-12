@@ -14,13 +14,16 @@ import BorderAllRoundedIcon from '@mui/icons-material/BorderAllRounded'
 import LocalHospitalRoundedIcon from '@mui/icons-material/LocalHospitalRounded'
 import ArticleRoundedIcon from '@mui/icons-material/ArticleRounded'
 
+import LoginView from './login/LoginView'
 import HomeView from './home/HomeView'
 import DogView from './dogs/DogView'
 import DogGrid from './dogs/DogGrid'
 import DogDetail from './dogs/DogDetail'
 import KennelView from './kennels/KennelView'
 import Kennels from './kennels/Kennels'
-import UnderConstructionView from './misc/UnderContructionView'
+import TreatmentView from './treatments/TreatmentView'
+import ReportView from './reports/ReportView'
+import UnderConstruction from './misc/UnderConstruction'
 import NotFoundView from './misc/NotFoundView'
 
 export default function App() {
@@ -34,7 +37,7 @@ export default function App() {
     <>
       <Routes>
         <Route path="/" element={<Outlet />}>
-          <Route index element={<HomeView />} />
+          <Route index element={<LoginView />} />
           <Route path="dogs" element={<DogView />}>
             <Route index element={<DogGrid />} />
             <Route path=":id" element={<DogDetail />} />
@@ -42,8 +45,12 @@ export default function App() {
           <Route path="kennels" element={<KennelView />}>
             <Route index element={<Kennels />} />
           </Route>
-          <Route path="treatments" element={<UnderConstructionView />} />
-          <Route path="reports" element={<UnderConstructionView />} />
+          <Route path="treatments" element={<TreatmentView />}>
+            <Route index element={<UnderConstruction />} />
+          </Route>
+          <Route path="reports" element={<ReportView />}>
+            <Route index element={<UnderConstruction />} />
+          </Route>
           <Route path="*" element={<NotFoundView />} />
         </Route>
       </Routes>

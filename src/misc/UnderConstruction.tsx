@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 import Typography from '@mui/material/Typography'
 
-export default function UnderConstructionView(): ReactElement {
+export default function UnderConstruction(): ReactElement {
   return (
     <Typography
       variant="body1"
