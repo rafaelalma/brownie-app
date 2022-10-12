@@ -2,9 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import CssBaseline from '@mui/material/CssBaseline'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { HashRouter } from 'react-router-dom'
 
 import App from './App'
+import { AuthenticationProvider } from './context/AuthenticationContext'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import reportWebVitals from './reportWebVitals'
 
@@ -26,9 +26,9 @@ root.render(
   <React.StrictMode>
     <CssBaseline />
     <QueryClientProvider client={queryClient}>
-      <HashRouter>
+      <AuthenticationProvider>
         <App />
-      </HashRouter>
+      </AuthenticationProvider>
     </QueryClientProvider>
   </React.StrictMode>
 )

@@ -12,13 +12,14 @@ import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded'
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded'
 
 import loginService from '../services/loginService'
-import { User } from '../types/userType'
+import { useSetUser } from '../context/AuthenticationContext'
 
 export default function LoginForm(): ReactElement {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-  const [user, setUser] = useState<User | null>(null)
+
+  const setUser = useSetUser()
 
   const handleUsernameChange = (
     event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
@@ -50,8 +51,6 @@ export default function LoginForm(): ReactElement {
         username,
         password,
       })
-
-      console.log(user)
 
       setUser(user)
       setUsername('')
