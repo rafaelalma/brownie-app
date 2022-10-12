@@ -1,3 +1,4 @@
+import { ReactElement } from 'react'
 import styled from '@emotion/styled'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
@@ -35,7 +36,7 @@ const DefaultColor = styled.span`
   font-weight: 500;
 `
 
-export default function InstructionsSubview() {
+export default function InstructionsSubview(): ReactElement {
   return (
     <>
       <Typography

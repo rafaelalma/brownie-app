@@ -1,6 +1,7 @@
+import { ReactElement } from 'react'
 import Typography from '@mui/material/Typography'
 
-export default function NotFoundView() {
+export default function NotFoundView(): ReactElement {
   return (
     <Typography
       variant="body1"

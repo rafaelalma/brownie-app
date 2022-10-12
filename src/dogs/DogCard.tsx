@@ -1,3 +1,4 @@
+import { ReactElement } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Card from '@mui/material/Card'
 import CardActionArea from '@mui/material/CardActionArea'
@@ -15,7 +16,7 @@ type Props = {
   dog: Dog
 }
 
-export default function DogCard({ dog }: Props) {
+export default function DogCard({ dog }: Props): ReactElement {
   const navigate = useNavigate()
 
   const { id, image, name, kennel } = dog

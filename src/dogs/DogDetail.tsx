@@ -1,3 +1,4 @@
+import { ReactElement } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
 import { getMonth, getYear, parseISO } from 'date-fns'
@@ -23,7 +24,7 @@ import dogService from '../services/dogService'
 import dogHelper from '../helpers/dogHelper'
 import { Sex } from '../types/dogTypes'
 
-export default function DogDetail() {
+export default function DogDetail(): ReactElement {
   const params = useParams()
   const id = params.id
 
