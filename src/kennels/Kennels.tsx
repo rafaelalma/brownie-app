@@ -1,6 +1,5 @@
 import { ReactElement } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import Container from '@mui/material/Container'
 import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
@@ -35,7 +34,7 @@ export default function Kennels(): ReactElement {
     const entries: [string, Dog[]][] = Object.entries(dogsGroupedByKennel)
 
     return (
-      <Container>
+      <>
         {entries
           .sort((a, b) => comparator(a[0], b[0]))
           .map((entry) => (
@@ -55,7 +54,7 @@ export default function Kennels(): ReactElement {
             </Accordion>
           ))}
         <Box height={70} />
-      </Container>
+      </>
     )
   }
 

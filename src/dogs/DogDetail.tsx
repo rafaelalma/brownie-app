@@ -2,7 +2,6 @@ import { ReactElement } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
 import { getMonth, getYear, parseISO } from 'date-fns'
-import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Skeleton from '@mui/material/Skeleton'
 import List from '@mui/material/List'
@@ -53,7 +52,7 @@ export default function DogDetail(): ReactElement {
     } = dog.data
 
     return (
-      <Container>
+      <>
         {image ? (
           <img height="358" src={image} alt={name} />
         ) : (
@@ -155,7 +154,7 @@ export default function DogDetail(): ReactElement {
           </Link>
         )}
         <Box height={70} />
-      </Container>
+      </>
     )
   }
 
