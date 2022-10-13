@@ -4,7 +4,6 @@ import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import Typography from '@mui/material/Typography'
-import Box from '@mui/material/Box'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 import dogService from '../services/dogService'
@@ -53,7 +52,6 @@ export default function Kennels(): ReactElement {
               ))}
             </Accordion>
           ))}
-        <Box height={70} />
       </>
     )
   }

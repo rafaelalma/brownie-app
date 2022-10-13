@@ -11,7 +11,6 @@ import ListItemText from '@mui/material/ListItemText'
 import Stack from '@mui/material/Stack'
 import Chip from '@mui/material/Chip'
 import Link from '@mui/material/Link'
-import Box from '@mui/material/Box'
 import BorderAllRoundedIcon from '@mui/icons-material/BorderAllRounded'
 import MaleRoundedIcon from '@mui/icons-material/MaleRounded'
 import FemaleRoundedIcon from '@mui/icons-material/FemaleRounded'
@@ -153,7 +152,6 @@ export default function DogDetail(): ReactElement {
             YouTube
           </Link>
         )}
-        <Box height={70} />
       </>
     )
   }
