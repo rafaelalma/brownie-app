@@ -1,5 +1,4 @@
-import axios from 'axios'
-
+import axiosInstance from '../axiosInstance'
 import { Dog } from '../types/dogType'
 
 let token: string | null = null
@@ -8,7 +7,7 @@ const setToken = (newToken: string) => {
   token = `bearer ${newToken}`
 }
 
-const baseUrl = '/api/dogs'
+const endpoint = 'dogs'
 
 const getAll = async (): Promise<Dog[]> => {
   const config = token
@@ -17,7 +16,7 @@ const getAll = async (): Promise<Dog[]> => {
       }
     : {}
 
-  const response = await axios.get(baseUrl, config)
+  const response = await axiosInstance.get(endpoint, config)
   return response.data
 }
 
@@ -28,7 +27,7 @@ const getById = async (id: string): Promise<Dog> => {
       }
     : {}
 
-  const response = await axios.get(`${baseUrl}/${id}`, config)
+  const response = await axiosInstance.get(`${endpoint}/${id}`, config)
   return response.data
 }
 
