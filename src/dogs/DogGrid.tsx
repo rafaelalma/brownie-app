@@ -19,7 +19,7 @@ export default function DogGrid(): ReactElement {
         {dogs.data
           .sort((a, b) => comparator(a.name, b.name))
           .map((dog) => (
-            <Grid xs={12} sm={6} md={4} lg={3} xl={2} key={dog.id}>
+            <Grid xs={12} sm={6} md={4} lg={3} key={dog.id}>
               <DogCard dog={dog} />
             </Grid>
           ))}
