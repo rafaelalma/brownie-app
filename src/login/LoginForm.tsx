@@ -14,6 +14,7 @@ import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded'
 import loginService from '../services/loginService'
 import { useSetUser } from '../context/AuthenticationContext'
 import dogService from '../services/dogService'
+import { LOCAL_STORAGE_USER_KEY } from '../constants'
 
 export default function LoginForm(): ReactElement {
   const [username, setUsername] = useState('')
@@ -53,7 +54,7 @@ export default function LoginForm(): ReactElement {
         password,
       })
 
-      window.localStorage.setItem('loggedBrownieUser', JSON.stringify(user))
+      window.localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(user))
       setUser(user)
       dogService.setToken(user.token)
       setUsername('')

@@ -7,12 +7,13 @@ import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded'
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded'
 
 import { useSetUser } from './context/AuthenticationContext'
+import { LOCAL_STORAGE_USER_KEY } from './constants'
 
 export default function AppTopBar() {
   const setUser = useSetUser()
 
   const handleLogoutClick = () => {
-    window.localStorage.removeItem('loggedBrownieUser')
+    window.localStorage.removeItem(LOCAL_STORAGE_USER_KEY)
     setUser(null)
   }
 

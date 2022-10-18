@@ -8,6 +8,7 @@ import {
 
 import { User } from '../types/userType'
 import dogService from '../services/dogService'
+import { LOCAL_STORAGE_USER_KEY } from '../constants'
 
 const AuthenticationContext = createContext<
   | {
@@ -21,7 +22,7 @@ function AuthenticationProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
 
   useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('loggedBrownieUser')
+    const loggedUserJSON = window.localStorage.getItem(LOCAL_STORAGE_USER_KEY)
     if (loggedUserJSON) {
       const loggedUser: User = JSON.parse(loggedUserJSON)
       setUser(loggedUser)
