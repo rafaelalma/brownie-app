@@ -3,14 +3,13 @@ import { useNavigate } from 'react-router-dom'
 import Card from '@mui/material/Card'
 import CardActionArea from '@mui/material/CardActionArea'
 import CardContent from '@mui/material/CardContent'
-import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import Skeleton from '@mui/material/Skeleton'
 import Stack from '@mui/material/Stack'
 import Chip from '@mui/material/Chip'
 import BorderAllRoundedIcon from '@mui/icons-material/BorderAllRounded'
 
 import { Dog } from '../types/dogType'
+import dogImage from './dogImage.jpg'
 
 type Props = {
   dog: Dog
@@ -29,9 +28,9 @@ export default function DogCard({ dog }: Props): ReactElement {
     <Card>
       <CardActionArea onClick={handleCardClick}>
         {image ? (
-          <CardMedia component="img" height="358" image={image} alt={name} />
+          <img height="358" src={image} alt={name} />
         ) : (
-          <Skeleton variant="rectangular" height={358} />
+          <img height="358" src={dogImage} alt="perro dibujado a mano" />
         )}
         <CardContent>
           <Stack

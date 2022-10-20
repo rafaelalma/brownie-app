@@ -3,7 +3,6 @@ import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
 import { getMonth, getYear, parseISO } from 'date-fns'
 import Typography from '@mui/material/Typography'
-import Skeleton from '@mui/material/Skeleton'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemIcon from '@mui/material/ListItemIcon'
@@ -21,6 +20,7 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
 import dogService from '../services/dogService'
 import dogHelper from '../helpers/dogHelper'
 import { Sex } from '../types/dogType'
+import dogImage from './dogImage.jpg'
 
 export default function DogDetail(): ReactElement {
   const params = useParams()
@@ -55,7 +55,7 @@ export default function DogDetail(): ReactElement {
         {image ? (
           <img height="358" src={image} alt={name} />
         ) : (
-          <Skeleton variant="rectangular" height={358} />
+          <img height="358" src={dogImage} alt="perro dibujado a mano" />
         )}
         <Stack
           direction="row"
