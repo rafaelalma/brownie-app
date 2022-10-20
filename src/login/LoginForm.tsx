@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton'
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded'
-import PasswordRoundedIcon from '@mui/icons-material/PasswordRounded'
+import LockOpenRoundedIcon from '@mui/icons-material/LockOpenRounded'
 import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded'
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded'
 
@@ -71,6 +71,7 @@ export default function LoginForm(): ReactElement {
         <OutlinedInput
           id="username"
           label="Usuario"
+          placeholder="Usuario"
           value={username}
           onChange={handleUsernameChange}
           required
@@ -86,13 +87,14 @@ export default function LoginForm(): ReactElement {
         <OutlinedInput
           id="password"
           label="Contraseña"
+          placeholder="Contraseña"
           type={showPassword ? 'text' : 'password'}
           value={password}
           onChange={handlePasswordChange}
           required
           startAdornment={
             <InputAdornment position="start">
-              <PasswordRoundedIcon />
+              <LockOpenRoundedIcon />
             </InputAdornment>
           }
           endAdornment={
