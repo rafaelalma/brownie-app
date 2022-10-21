@@ -8,12 +8,8 @@ import ListItem from '@mui/material/ListItem'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import LabelImportantRoundedIcon from '@mui/icons-material/LabelImportantRounded'
-import { SxProps } from '@mui/material'
 
-const dividerStyles: SxProps = {
-  mt: 2,
-  mb: 2,
-}
+import { dividerStyles } from '../styles'
 
 const nestedListStyle = {
   listStyle: 'lower-alpha',
