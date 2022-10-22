@@ -21,6 +21,8 @@ import dogService from '../services/dogService'
 import dogHelper from '../helpers/dogHelper'
 import { Sex } from '../types/dogType'
 import dogImage from './dogImage.jpg'
+import ErrorMessage from '../misc/ErrorMessage'
+import Loading from '../misc/Loading'
 
 export default function DogDetail(): ReactElement {
   const params = useParams()
@@ -157,28 +159,8 @@ export default function DogDetail(): ReactElement {
   }
 
   if (dog.error) {
-    return (
-      <Typography
-        variant="body1"
-        fontSize={24}
-        fontWeight={500}
-        textAlign="center"
-        padding={2}
-      >{`An error has occurred: ${
-        dog.error instanceof Error ? dog.error.message : ''
-      }`}</Typography>
-    )
+    return <ErrorMessage error={dog.error} />
   }
 
-  return (
-    <Typography
-      variant="body1"
-      fontSize={24}
-      fontWeight={500}
-      textAlign="center"
-      padding={2}
-    >
-      Cargando...
-    </Typography>
-  )
+  return <Loading />
 }

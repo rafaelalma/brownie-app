@@ -8,6 +8,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 import dogService from '../services/dogService'
 import { Dog } from '../types/dogType'
+import ErrorMessage from '../misc/ErrorMessage'
+import Loading from '../misc/Loading'
 
 const groupBy = (array: any[], field: string) => {
   return array.reduce((result, currentValue) => {
@@ -25,7 +27,7 @@ const comparator = (a: string, b: string) => {
 }
 
 export default function Kennels(): ReactElement {
-  const dogs = useQuery(['dogs'], dogService.getAll)
+  const dogs = useQuery(['dogs'], () => dogService.getAll())
 
   if (dogs.data) {
     const dogsGroupedByKennel = groupBy(dogs.data, 'kennel')
@@ -57,28 +59,8 @@ export default function Kennels(): ReactElement {
   }
 
   if (dogs.error) {
-    return (
-      <Typography
-        variant="body1"
-        fontSize={24}
-        fontWeight={500}
-        textAlign="center"
-        padding={2}
-      >{`An error has occurred: ${
-        dogs.error instanceof Error ? dogs.error.message : ''
-      }`}</Typography>
-    )
+    return <ErrorMessage error={dogs.error} />
   }
 
-  return (
-    <Typography
-      variant="body1"
-      fontSize={24}
-      fontWeight={500}
-      textAlign="center"
-      padding={2}
-    >
-      Cargando...
-    </Typography>
-  )
+  return <Loading />
 }

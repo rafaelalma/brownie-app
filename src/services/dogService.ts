@@ -1,5 +1,6 @@
 import axiosInstance from '../axiosInstance'
-import { Dog } from '../types/dogType'
+import { Dog, DogSortField } from '../types/dogType'
+import { SortOrder } from '../types/utilType'
 
 let token: string | null = null
 
@@ -9,14 +10,19 @@ const setToken = (newToken: string) => {
 
 const endpoint = 'dogs'
 
-const getAll = async (): Promise<Dog[]> => {
+const getAll = async (
+  sortField: DogSortField = DogSortField.Name,
+  sortOrder: SortOrder = SortOrder.Ascending
+): Promise<Dog[]> => {
   const config = token
     ? {
         headers: { Authorization: token },
       }
     : {}
 
-  const response = await axiosInstance.get(endpoint, config)
+  const query = `?sortField=${sortField}&sortOrder=${sortOrder}`
+
+  const response = await axiosInstance.get(endpoint + query, config)
   return response.data
 }
 

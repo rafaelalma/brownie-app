@@ -29,3 +29,13 @@ export interface Dog {
   youtubeUrl: string | null
   image: string | null
 }
+
+export enum DogSortField {
+  CreateTime = 'createTime',
+  UpdateTime = 'updateTime',
+  Name = 'name',
+  BirthDate = 'birthDate',
+  Height = 'height',
+  Length = 'length',
+  Weight = 'weight',
+}

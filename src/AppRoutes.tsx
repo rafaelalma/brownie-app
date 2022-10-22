@@ -3,7 +3,7 @@ import { Routes, Route, Outlet } from 'react-router-dom'
 
 import HomeView from './home/HomeView'
 import DogView from './dogs/DogView'
-import DogGrid from './dogs/DogGrid'
+import DogGridSubview from './dogs/DogGridSubview'
 import DogDetail from './dogs/DogDetail'
 import KennelView from './kennels/KennelView'
 import Kennels from './kennels/Kennels'
@@ -19,7 +19,7 @@ export default function AppRoutes(): ReactElement {
       <Route path="/" element={<Outlet />}>
         <Route index element={<HomeView />} />
         <Route path="dogs" element={<DogView />}>
-          <Route index element={<DogGrid />} />
+          <Route index element={<DogGridSubview />} />
           <Route path=":id" element={<DogDetail />} />
         </Route>
         <Route path="kennels" element={<KennelView />}>
