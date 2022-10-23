@@ -6,6 +6,7 @@ import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
+import TextField from '@mui/material/TextField'
 import Fab from '@mui/material/Fab'
 import AddIcon from '@mui/icons-material/Add'
 import { SelectChangeEvent } from '@mui/material'
@@ -25,6 +26,7 @@ export default function DogGridSubview() {
 
   const [sortField, setSortField] = useState(DogSortField.Name)
   const [sortOrder, setSortOrder] = useState(SortOrder.Ascending)
+  const [searchField, setSearchField] = useState('')
 
   const handleSortFieldChange = (event: SelectChangeEvent<DogSortField>) => {
     setSortField(event.target.value as DogSortField)
@@ -34,6 +36,12 @@ export default function DogGridSubview() {
     setSortOrder(event.target.value as SortOrder)
   }
 
+  const handleSearchFieldChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setSearchField(event.target.value)
+  }
+
   const handleAddDogClick = () => {
     navigate('add')
   }
@@ -41,14 +49,22 @@ export default function DogGridSubview() {
   return (
     <>
       <Paper sx={paperStyles} elevation={3}>
-        <Stack direction="row" spacing={1}>
+        <TextField
+          id="search-field"
+          label="Buscar"
+          value={searchField}
+          onChange={handleSearchFieldChange}
+          size="small"
+          fullWidth
+        />
+        <Stack direction="row" spacing={1} mt={2}>
           <FormControl fullWidth size="small">
-            <InputLabel id="sort-field">Ordenar por:</InputLabel>
+            <InputLabel id="sort-field">Ordenar por</InputLabel>
             <Select
               labelId="sort-field"
               id="sort-field"
               value={sortField}
-              label="Ordenar por:"
+              label="Ordenar por"
               onChange={handleSortFieldChange}
             >
               <MenuItem value={DogSortField.CreateTime}>
@@ -78,7 +94,11 @@ export default function DogGridSubview() {
           </FormControl>
         </Stack>
       </Paper>
-      <DogGrid sortField={sortField} sortOrder={sortOrder} />
+      <DogGrid
+        sortField={sortField}
+        sortOrder={sortOrder}
+        searchField={searchField}
+      />
       {isCoordinator && (
         <Fab
           color="primary"

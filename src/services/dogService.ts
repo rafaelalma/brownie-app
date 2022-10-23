@@ -12,7 +12,8 @@ const endpoint = 'dogs'
 
 const getAll = async (
   sortField: DogSortField = DogSortField.Name,
-  sortOrder: SortOrder = SortOrder.Ascending
+  sortOrder: SortOrder = SortOrder.Ascending,
+  searchField: string = ''
 ): Promise<Dog[]> => {
   const config = token
     ? {
@@ -20,7 +21,7 @@ const getAll = async (
       }
     : {}
 
-  const query = `?sortField=${sortField}&sortOrder=${sortOrder}`
+  const query = `?sortField=${sortField}&sortOrder=${sortOrder}&searchField=${searchField}`
 
   const response = await axiosInstance.get(endpoint + query, config)
   return response.data
@@ -28,7 +29,7 @@ const getAll = async (
 
 const getAllGrouped = async (
   groupField: DogGroupField,
-  searchField: string
+  searchField: string = ''
 ): Promise<any> => {
   const config = token
     ? {

@@ -12,11 +12,16 @@ import Loading from '../misc/Loading'
 type Props = {
   sortField: DogSortField
   sortOrder: SortOrder
+  searchField: string
 }
 
-export default function DogGrid({ sortField, sortOrder }: Props): ReactElement {
-  const dogs = useQuery(['dogs', sortField, sortOrder], () =>
-    dogService.getAll(sortField, sortOrder)
+export default function DogGrid({
+  sortField,
+  sortOrder,
+  searchField,
+}: Props): ReactElement {
+  const dogs = useQuery(['dogs', sortField, sortOrder, searchField], () =>
+    dogService.getAll(sortField, sortOrder, searchField)
   )
 
   if (dogs.data) {

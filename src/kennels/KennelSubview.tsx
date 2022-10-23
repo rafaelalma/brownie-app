@@ -18,7 +18,7 @@ export default function KennelSubview() {
       <Paper sx={paperStyles} elevation={3}>
         <TextField
           id="search-field"
-          label="Buscar:"
+          label="Buscar"
           value={searchField}
           onChange={handleSearchFieldChange}
           size="small"
