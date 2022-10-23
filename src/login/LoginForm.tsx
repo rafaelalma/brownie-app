@@ -67,7 +67,7 @@ export default function LoginForm(): ReactElement {
 
   return (
     <form onSubmit={handleLoginSubmit} style={{ padding: '16px' }}>
-      <FormControl variant="outlined" fullWidth margin="normal">
+      <FormControl required variant="outlined" fullWidth margin="normal">
         <InputLabel htmlFor="username">Usuario</InputLabel>
         <OutlinedInput
           id="username"
@@ -75,7 +75,6 @@ export default function LoginForm(): ReactElement {
           placeholder="Usuario"
           value={username}
           onChange={handleUsernameChange}
-          required
           startAdornment={
             <InputAdornment position="start">
               <AccountCircleRoundedIcon />
@@ -83,7 +82,7 @@ export default function LoginForm(): ReactElement {
           }
         />
       </FormControl>
-      <FormControl variant="outlined" fullWidth margin="normal">
+      <FormControl required variant="outlined" fullWidth margin="normal">
         <InputLabel htmlFor="password">Contraseña</InputLabel>
         <OutlinedInput
           id="password"
@@ -92,7 +91,6 @@ export default function LoginForm(): ReactElement {
           type={showPassword ? 'text' : 'password'}
           value={password}
           onChange={handlePasswordChange}
-          required
           startAdornment={
             <InputAdornment position="start">
               <LockOpenRoundedIcon />
