@@ -49,16 +49,11 @@ export default function DogDetail(): ReactElement {
       size,
       weight,
       youtubeUrl,
-      image,
     } = dog.data
 
     return (
       <>
-        {image ? (
-          <img height="358" src={image} alt={name} />
-        ) : (
-          <img height="358" src={dogImage} alt="perro dibujado a mano" />
-        )}
+        <img height="358" src={dogImage} alt="perro dibujado a mano" />
         <Stack
           direction="row"
           justifyContent="space-between"

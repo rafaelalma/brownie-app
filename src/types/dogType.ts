@@ -5,11 +5,13 @@ export enum Size {
   Medium = 'medium',
   MediumLittle = 'medium little',
   Little = 'little',
+  Null = '',
 }
 
 export enum Sex {
   Male = 'male',
   Female = 'female',
+  Null = '',
 }
 
 export interface Dog {
@@ -27,7 +29,20 @@ export interface Dog {
   isCatFriendly: boolean | null
   size: Size | null
   youtubeUrl: string | null
-  image: string | null
+}
+
+export type NewDog = Omit<Dog, 'id'>
+
+export enum IsSpayedOrNeutered {
+  Yes = 'yes',
+  No = 'no',
+  Null = '',
+}
+
+export enum IsCatFriendly {
+  Yes = 'yes',
+  No = 'no',
+  Null = '',
 }
 
 export enum DogSortField {

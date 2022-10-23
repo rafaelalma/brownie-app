@@ -18,7 +18,7 @@ type Props = {
 export default function DogCard({ dog }: Props): ReactElement {
   const navigate = useNavigate()
 
-  const { id, image, name, kennel } = dog
+  const { id, name, kennel } = dog
 
   const handleCardClick = () => {
     navigate(id)
@@ -27,11 +27,7 @@ export default function DogCard({ dog }: Props): ReactElement {
   return (
     <Card>
       <CardActionArea onClick={handleCardClick}>
-        {image ? (
-          <img height="358" src={image} alt={name} />
-        ) : (
-          <img height="358" src={dogImage} alt="perro dibujado a mano" />
-        )}
+        <img height="358" src={dogImage} alt="perro dibujado a mano" />
         <CardContent>
           <Stack
             direction="row"
