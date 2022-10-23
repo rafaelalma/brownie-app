@@ -11,9 +11,13 @@ import { Dog, DogGroupField } from '../types/dogType'
 import ErrorMessage from '../misc/ErrorMessage'
 import Loading from '../misc/Loading'
 
-export default function Kennels(): ReactElement {
-  const dogs = useQuery(['dogs'], () =>
-    dogService.getAllGrouped(DogGroupField.Kennel)
+type Props = {
+  searchField: string
+}
+
+export default function Kennels({ searchField }: Props): ReactElement {
+  const dogs = useQuery(['dogs', searchField], () =>
+    dogService.getAllGrouped(DogGroupField.Kennel, searchField)
   )
 
   if (dogs.data) {

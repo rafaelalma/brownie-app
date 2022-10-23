@@ -6,7 +6,7 @@ import DogView from './dogs/DogView'
 import DogGridSubview from './dogs/DogGridSubview'
 import DogDetail from './dogs/DogDetail'
 import KennelView from './kennels/KennelView'
-import Kennels from './kennels/Kennels'
+import KennelSubview from './kennels/KennelSubview'
 import TreatmentView from './treatments/TreatmentView'
 import TreatmentsSubview from './treatments/TreatmentsSubview'
 import ReportView from './reports/ReportView'
@@ -23,7 +23,7 @@ export default function AppRoutes(): ReactElement {
           <Route path=":id" element={<DogDetail />} />
         </Route>
         <Route path="kennels" element={<KennelView />}>
-          <Route index element={<Kennels />} />
+          <Route index element={<KennelSubview />} />
         </Route>
         <Route path="treatments" element={<TreatmentView />}>
           <Route index element={<TreatmentsSubview />} />

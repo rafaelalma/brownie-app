@@ -10,6 +10,7 @@ import { SelectChangeEvent } from '@mui/material'
 import { DogSortField } from '../types/dogType'
 import { SortOrder } from '../types/utilType'
 import DogGrid from './DogGrid'
+import { paperStyles } from '../styles'
 
 export default function DogGridSubview() {
   const [sortField, setSortField] = useState(DogSortField.Name)
@@ -24,18 +25,7 @@ export default function DogGridSubview() {
   }
   return (
     <>
-      <Paper
-        sx={{
-          position: 'sticky',
-          top: 60,
-          left: 0,
-          right: 0,
-          zIndex: 1,
-          padding: 2,
-          paddingTop: 2.5,
-        }}
-        elevation={3}
-      >
+      <Paper sx={paperStyles} elevation={3}>
         <Stack direction="row" spacing={1}>
           <FormControl fullWidth size="small">
             <InputLabel id="sort-field">Ordenar por:</InputLabel>

@@ -26,14 +26,17 @@ const getAll = async (
   return response.data
 }
 
-const getAllGrouped = async (groupField: DogGroupField): Promise<any> => {
+const getAllGrouped = async (
+  groupField: DogGroupField,
+  searchField: string
+): Promise<any> => {
   const config = token
     ? {
         headers: { Authorization: token },
       }
     : {}
 
-  const query = `?groupField=${groupField}`
+  const query = `?groupField=${groupField}&searchField=${searchField}`
 
   const response = await axiosInstance.get(endpoint + query, config)
   return response.data
