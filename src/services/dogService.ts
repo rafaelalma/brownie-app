@@ -1,5 +1,5 @@
 import axiosInstance from '../axiosInstance'
-import { Dog, DogSortField } from '../types/dogType'
+import { Dog, DogGroupField, DogSortField } from '../types/dogType'
 import { SortOrder } from '../types/utilType'
 
 let token: string | null = null
@@ -26,6 +26,19 @@ const getAll = async (
   return response.data
 }
 
+const getAllGrouped = async (groupField: DogGroupField): Promise<any> => {
+  const config = token
+    ? {
+        headers: { Authorization: token },
+      }
+    : {}
+
+  const query = `?groupField=${groupField}`
+
+  const response = await axiosInstance.get(endpoint + query, config)
+  return response.data
+}
+
 const getById = async (id: string): Promise<Dog> => {
   const config = token
     ? {
@@ -40,6 +53,7 @@ const getById = async (id: string): Promise<Dog> => {
 const dogService = {
   setToken,
   getAll,
+  getAllGrouped,
   getById,
 }
 

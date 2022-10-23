@@ -39,3 +39,8 @@ export enum DogSortField {
   Length = 'length',
   Weight = 'weight',
 }
+
+export enum DogGroupField {
+  Kennel = 'kennel',
+  Breed = 'breed',
+}
