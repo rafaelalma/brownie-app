@@ -1,5 +1,5 @@
 import axiosInstance from '../axiosInstance'
-import { Dog, DogGroupField, DogSortField } from '../types/dogType'
+import { Dog, DogGroupField, DogSortField, NewDog } from '../types/dogType'
 import { SortOrder } from '../types/utilType'
 
 let token: string | null = null
@@ -54,11 +54,23 @@ const getById = async (id: string): Promise<Dog> => {
   return response.data
 }
 
+const add = async (newDog: NewDog): Promise<Dog> => {
+  const config = token
+    ? {
+        headers: { Authorization: token },
+      }
+    : {}
+
+  const response = await axiosInstance.post(endpoint, newDog, config)
+  return response.data
+}
+
 const dogService = {
   setToken,
   getAll,
   getAllGrouped,
   getById,
+  add,
 }
 
 export default dogService
