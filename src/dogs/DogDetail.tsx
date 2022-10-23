@@ -141,6 +141,7 @@ export default function DogDetail(): ReactElement {
         {youtubeUrl && (
           <Link
             href={youtubeUrl}
+            target="_blank"
             variant="body1"
             fontWeight={500}
             underline="none"
