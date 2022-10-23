@@ -1,18 +1,28 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
+import Fab from '@mui/material/Fab'
+import AddIcon from '@mui/icons-material/Add'
 import { SelectChangeEvent } from '@mui/material'
 
 import { DogSortField } from '../types/dogType'
 import { SortOrder } from '../types/utilType'
 import DogGrid from './DogGrid'
 import { paperStyles } from '../styles'
+import { useUser } from '../context/AuthenticationContext'
+import userHelper from '../helpers/userHelper'
 
 export default function DogGridSubview() {
+  const user = useUser()
+  const isCoordinator = userHelper.isCoordinator(user)
+
+  const navigate = useNavigate()
+
   const [sortField, setSortField] = useState(DogSortField.Name)
   const [sortOrder, setSortOrder] = useState(SortOrder.Ascending)
 
@@ -23,6 +33,11 @@ export default function DogGridSubview() {
   const handleSortOrderChange = (event: SelectChangeEvent<SortOrder>) => {
     setSortOrder(event.target.value as SortOrder)
   }
+
+  const handleAddDogClick = () => {
+    navigate('add')
+  }
+
   return (
     <>
       <Paper sx={paperStyles} elevation={3}>
@@ -64,6 +79,17 @@ export default function DogGridSubview() {
         </Stack>
       </Paper>
       <DogGrid sortField={sortField} sortOrder={sortOrder} />
+      {isCoordinator && (
+        <Fab
+          color="primary"
+          aria-label="add-dog"
+          onClick={handleAddDogClick}
+          size="large"
+          sx={{ position: 'fixed', bottom: 80, right: 20 }}
+        >
+          <AddIcon />
+        </Fab>
+      )}
     </>
   )
 }
