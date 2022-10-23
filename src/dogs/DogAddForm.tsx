@@ -26,7 +26,7 @@ import {
   Sex,
   Size,
 } from '../types/dogType'
-import { dividerFormStyles } from '../styles'
+import { dividerFormStyles, alertStyles } from '../styles'
 import dogHelper from '../helpers/dogHelper'
 import dogService from '../services/dogService'
 
@@ -454,12 +454,11 @@ export default function DogAddForm(): ReactElement {
         open={openSuccessSnackbar}
         autoHideDuration={3000}
         onClose={handleCloseSuccessSnackbar}
-        sx={{ position: 'fixed', bottom: 60 }}
       >
         <Alert
           onClose={handleCloseSuccessSnackbar}
           severity="success"
-          sx={{ width: '100%' }}
+          sx={alertStyles}
         >
           Perro añadido correctamente
         </Alert>
@@ -468,12 +467,11 @@ export default function DogAddForm(): ReactElement {
         open={openErrorSnackbar}
         autoHideDuration={3000}
         onClose={handleCloseErrorSnackbar}
-        sx={{ position: 'fixed', bottom: 60 }}
       >
         <Alert
           onClose={handleCloseErrorSnackbar}
           severity="error"
-          sx={{ width: '100%' }}
+          sx={alertStyles}
         >
           Fallo al añadir perro
         </Alert>

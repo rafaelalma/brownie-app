@@ -20,3 +20,5 @@ export const paperStyles: SxProps = {
 }
 
 export const fabStyles: SxProps = { position: 'fixed', bottom: 80, right: 20 }
+
+export const alertStyles: SxProps = { position: 'fixed', bottom: 80 }
