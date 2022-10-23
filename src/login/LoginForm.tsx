@@ -15,6 +15,7 @@ import loginService from '../services/loginService'
 import { useSetUser } from '../context/AuthenticationContext'
 import dogService from '../services/dogService'
 import { LOCAL_STORAGE_USER_KEY } from '../constants'
+import { dividerFormStyles } from '../styles'
 
 export default function LoginForm(): ReactElement {
   const [username, setUsername] = useState('')
@@ -45,7 +46,7 @@ export default function LoginForm(): ReactElement {
     event.preventDefault()
   }
 
-  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleLoginSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     try {
@@ -65,7 +66,7 @@ export default function LoginForm(): ReactElement {
   }
 
   return (
-    <form onSubmit={handleLogin} style={{ padding: '16px' }}>
+    <form onSubmit={handleLoginSubmit} style={{ padding: '16px' }}>
       <FormControl variant="outlined" fullWidth margin="normal">
         <InputLabel htmlFor="username">Usuario</InputLabel>
         <OutlinedInput
@@ -114,8 +115,8 @@ export default function LoginForm(): ReactElement {
             </InputAdornment>
           }
         />
-        <Divider sx={{ margin: 2 }} />
-        <Button type="submit" variant="contained">
+        <Divider sx={dividerFormStyles} />
+        <Button type="submit" variant="contained" fullWidth>
           Iniciar sesión
         </Button>
       </FormControl>

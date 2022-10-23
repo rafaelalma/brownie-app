@@ -5,6 +5,10 @@ export const dividerStyles: SxProps = {
   mb: 2,
 }
 
+export const dividerFormStyles: SxProps = {
+  m: 2,
+}
+
 export const paperStyles: SxProps = {
   position: 'sticky',
   top: 60,
