@@ -1,7 +1,6 @@
 import { ReactElement } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useParams } from 'react-router-dom'
-import { getMonth, getYear, parseISO } from 'date-fns'
 import Typography from '@mui/material/Typography'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -16,6 +15,7 @@ import FemaleRoundedIcon from '@mui/icons-material/FemaleRounded'
 import CakeRoundedIcon from '@mui/icons-material/CakeRounded'
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
+import Box from '@mui/material/Box'
 
 import dogService from '../services/dogService'
 import dogHelper from '../helpers/dogHelper'
@@ -53,7 +53,15 @@ export default function DogDetail(): ReactElement {
 
     return (
       <>
-        <img height="358" src={dogImage} alt="perro dibujado a mano" />
+        <Box sx={{ height: 358 }}>
+          <img
+            width="100%"
+            height="100%"
+            style={{ objectFit: 'contain' }}
+            src={dogImage}
+            alt="perro dibujado a mano"
+          />
+        </Box>
         <Stack
           direction="row"
           justifyContent="space-between"
@@ -92,9 +100,7 @@ export default function DogDetail(): ReactElement {
               <ListItemIcon>
                 <CakeRoundedIcon />
               </ListItemIcon>
-              <ListItemText>{`${getMonth(
-                parseISO(birthDate.toString())
-              )}/${getYear(parseISO(birthDate.toString()))}`}</ListItemText>
+              <ListItemText>{birthDate}</ListItemText>
             </ListItem>
           )}
           {isSpayedOrNeutered !== null && (

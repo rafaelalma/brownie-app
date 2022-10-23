@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography'
 import Stack from '@mui/material/Stack'
 import Chip from '@mui/material/Chip'
 import BorderAllRoundedIcon from '@mui/icons-material/BorderAllRounded'
+import Box from '@mui/material/Box'
 
 import { Dog } from '../types/dogType'
 import dogImage from './dogImage.jpg'
@@ -27,7 +28,15 @@ export default function DogCard({ dog }: Props): ReactElement {
   return (
     <Card>
       <CardActionArea onClick={handleCardClick}>
-        <img height="358" src={dogImage} alt="perro dibujado a mano" />
+        <Box sx={{ height: 358 }}>
+          <img
+            width="100%"
+            height="100%"
+            style={{ objectFit: 'contain' }}
+            src={dogImage}
+            alt="perro dibujado a mano"
+          />
+        </Box>
         <CardContent>
           <Stack
             direction="row"
