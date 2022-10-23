@@ -1,9 +1,9 @@
 export enum Role {
-  Administrator = 'administrator',
-  Coordinator = 'coordinator',
-  Veteran = 'veteran',
-  Volunteer = 'volunteer',
-  User = 'user',
+  Administrator = 4,
+  Coordinator = 3,
+  Veteran = 2,
+  Volunteer = 1,
+  User = 0,
 }
 
 export interface User {

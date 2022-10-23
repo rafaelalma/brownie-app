@@ -5,13 +5,15 @@ import { useUser } from './context/AuthenticationContext'
 import AppRoutes from './AppRoutes'
 import AppTopBar from './AppTopBar'
 import AppBottomNavigation from './AppBottomNavigation'
+import userHelper from './helpers/userHelper'
 
 export default function App() {
   const user = useUser()
+  const isVolunteer = userHelper.isVolunteer(user)
 
   return (
     <>
-      {user ? (
+      {isVolunteer ? (
         <HashRouter>
           <AppTopBar />
           <AppRoutes />
