@@ -18,3 +18,5 @@ export const paperStyles: SxProps = {
   padding: 2,
   paddingTop: 2.5,
 }
+
+export const fabStyles: SxProps = { position: 'fixed', bottom: 80, right: 20 }

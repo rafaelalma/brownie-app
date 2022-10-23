@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
-import { useQuery } from '@tanstack/react-query'
-import { useParams } from 'react-router-dom'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useNavigate, useParams } from 'react-router-dom'
 import Typography from '@mui/material/Typography'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -16,6 +16,8 @@ import CakeRoundedIcon from '@mui/icons-material/CakeRounded'
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
 import Box from '@mui/material/Box'
+import Fab from '@mui/material/Fab'
+import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded'
 
 import dogService from '../services/dogService'
 import dogHelper from '../helpers/dogHelper'
@@ -23,8 +25,16 @@ import { Sex } from '../types/dogType'
 import dogImage from './dogImage.jpg'
 import ErrorMessage from '../misc/ErrorMessage'
 import Loading from '../misc/Loading'
+import { useUser } from '../context/AuthenticationContext'
+import userHelper from '../helpers/userHelper'
+import { fabStyles } from '../styles'
 
 export default function DogDetail(): ReactElement {
+  const user = useUser()
+  const isCoordinator = userHelper.isCoordinator(user)
+
+  const navigate = useNavigate()
+
   const params = useParams()
   const id = params.id
 
@@ -32,7 +42,23 @@ export default function DogDetail(): ReactElement {
     throw new Error('route must have an id')
   }
 
+  const queryClient = useQueryClient()
+
+  const handleMutationSuccess = () => {
+    queryClient.invalidateQueries(['dogs'])
+
+    navigate('/dogs')
+  }
+
+  const mutation = useMutation((id: string) => dogService.remove(id), {
+    onSuccess: handleMutationSuccess,
+  })
+
   const dog = useQuery(['dog', id], () => dogService.getById(id))
+
+  const handleDeleteDogClick = () => {
+    mutation.mutate(id)
+  }
 
   if (dog.data) {
     const {
@@ -155,6 +181,17 @@ export default function DogDetail(): ReactElement {
           >
             YouTube
           </Link>
+        )}
+        {isCoordinator && (
+          <Fab
+            color="error"
+            aria-label="delete-dog"
+            onClick={handleDeleteDogClick}
+            size="large"
+            sx={fabStyles}
+          >
+            <DeleteForeverRoundedIcon fontSize="large" />
+          </Fab>
         )}
       </>
     )

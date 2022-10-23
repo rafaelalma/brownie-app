@@ -14,7 +14,7 @@ import { SelectChangeEvent } from '@mui/material'
 import { DogSortField } from '../types/dogType'
 import { SortOrder } from '../types/utilType'
 import DogGrid from './DogGrid'
-import { paperStyles } from '../styles'
+import { fabStyles, paperStyles } from '../styles'
 import { useUser } from '../context/AuthenticationContext'
 import userHelper from '../helpers/userHelper'
 
@@ -105,9 +105,9 @@ export default function DogGridSubview() {
           aria-label="add-dog"
           onClick={handleAddDogClick}
           size="large"
-          sx={{ position: 'fixed', bottom: 80, right: 20 }}
+          sx={fabStyles}
         >
-          <AddIcon />
+          <AddIcon fontSize="large" />
         </Fab>
       )}
     </>
