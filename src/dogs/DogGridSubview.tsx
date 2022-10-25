@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import debounce from 'lodash.debounce'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
 import FormControl from '@mui/material/FormControl'
@@ -17,6 +18,7 @@ import DogGrid from './DogGrid'
 import { fabStyles, paperStyles } from '../styles'
 import { useUser } from '../context/AuthenticationContext'
 import userHelper from '../helpers/userHelper'
+import { DEBOUNCED_SEARCH_TIME } from '../constants'
 
 export default function DogGridSubview() {
   const user = useUser()
@@ -42,6 +44,16 @@ export default function DogGridSubview() {
     setSearchField(event.target.value)
   }
 
+  const debouncedSearch = useMemo(() => {
+    return debounce(handleSearchFieldChange, DEBOUNCED_SEARCH_TIME)
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      return debouncedSearch.cancel()
+    }
+  })
+
   const handleAddDogClick = () => {
     navigate('add')
   }
@@ -52,8 +64,7 @@ export default function DogGridSubview() {
         <TextField
           id="search-field"
           label="Buscar"
-          value={searchField}
-          onChange={handleSearchFieldChange}
+          onChange={debouncedSearch}
           size="small"
           fullWidth
         />
