@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { ReactElement, useState } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useNavigate, useParams } from 'react-router-dom'
 import Typography from '@mui/material/Typography'
@@ -18,6 +18,12 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
 import Box from '@mui/material/Box'
 import Fab from '@mui/material/Fab'
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded'
+import Dialog from '@mui/material/Dialog'
+import DialogActions from '@mui/material/DialogActions'
+import DialogContent from '@mui/material/DialogContent'
+import DialogContentText from '@mui/material/DialogContentText'
+import DialogTitle from '@mui/material/DialogTitle'
+import Button from '@mui/material/Button'
 
 import dogService from '../services/dogService'
 import dogHelper from '../helpers/dogHelper'
@@ -42,6 +48,8 @@ export default function DogDetail(): ReactElement {
     throw new Error('route must have an id')
   }
 
+  const [openDeleteDialog, setOpenDeleteDialog] = useState(false)
+
   const queryClient = useQueryClient()
 
   const handleMutationSuccess = () => {
@@ -59,6 +67,9 @@ export default function DogDetail(): ReactElement {
   const handleDeleteDogClick = () => {
     mutation.mutate(id)
   }
+
+  const handleOpenDeleteDialog = () => setOpenDeleteDialog(true)
+  const handleCloseDeleteDialog = () => setOpenDeleteDialog(false)
 
   if (dog.data) {
     const {
@@ -183,15 +194,35 @@ export default function DogDetail(): ReactElement {
           </Link>
         )}
         {isCoordinator && (
-          <Fab
-            color="error"
-            aria-label="delete-dog"
-            onClick={handleDeleteDogClick}
-            size="large"
-            sx={fabStyles}
-          >
-            <DeleteForeverRoundedIcon fontSize="large" />
-          </Fab>
+          <>
+            <Fab
+              color="error"
+              aria-label="delete-dog"
+              onClick={handleOpenDeleteDialog}
+              size="large"
+              sx={fabStyles}
+            >
+              <DeleteForeverRoundedIcon fontSize="large" />
+            </Fab>
+            <Dialog
+              open={openDeleteDialog}
+              onClose={handleCloseDeleteDialog}
+              aria-labelledby="delete-dialog-title"
+              aria-describedby="delete-dialog-description"
+            >
+              <DialogTitle id="delete-dialog-title">
+                ¿Borrar al perro {name}?
+              </DialogTitle>
+              <DialogContent>
+                <DialogContentText id="delete-dialog-description">
+                  Esta acción no puede ser deshecha.
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleDeleteDogClick}>Borrar</Button>
+              </DialogActions>
+            </Dialog>
+          </>
         )}
       </>
     )
