@@ -3,9 +3,11 @@ import { Routes, Route, Outlet, Navigate } from 'react-router-dom'
 
 import HomeView from './home/HomeView'
 import DogView from './dogs/DogView'
-import DogGridSubview from './dogs/DogGridSubview'
+import DogList from './dogs/DogList'
 import DogAddForm from './dogs/DogAddForm'
+import DogDetailView from './dogs/DogDetailView'
 import DogDetail from './dogs/DogDetail'
+import DogEdit from './dogs/DogEdit'
 import KennelView from './kennels/KennelView'
 import KennelSubview from './kennels/KennelSubview'
 import TreatmentView from './treatments/TreatmentView'
@@ -25,14 +27,17 @@ export default function AppRoutes(): ReactElement {
       <Route path="/" element={<Outlet />}>
         <Route index element={<HomeView />} />
         <Route path="dogs" element={<DogView />}>
-          <Route index element={<DogGridSubview />} />
+          <Route index element={<DogList />} />
           <Route
             path="add"
             element={
               isCoordinator ? <DogAddForm /> : <Navigate replace to="/dogs" />
             }
           />
-          <Route path=":id" element={<DogDetail />} />
+          <Route path=":id" element={<DogDetailView />}>
+            <Route index element={<DogDetail />} />
+            <Route path="edit" element={<DogEdit />} />
+          </Route>
         </Route>
         <Route path="kennels" element={<KennelView />}>
           <Route index element={<KennelSubview />} />

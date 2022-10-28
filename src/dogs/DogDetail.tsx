@@ -1,6 +1,7 @@
-import { ReactElement, useState } from 'react'
+import { ReactElement, useCallback, useMemo, useState } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useNavigate, useParams } from 'react-router-dom'
+import { format } from 'date-fns'
 import Typography from '@mui/material/Typography'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -16,14 +17,17 @@ import CakeRoundedIcon from '@mui/icons-material/CakeRounded'
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded'
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
 import Box from '@mui/material/Box'
-import Fab from '@mui/material/Fab'
-import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 import Button from '@mui/material/Button'
+import SpeedDial from '@mui/material/SpeedDial'
+import SpeedDialIcon from '@mui/material/SpeedDialIcon'
+import SpeedDialAction from '@mui/material/SpeedDialAction'
+import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded'
+import EditRoundedIcon from '@mui/icons-material/EditRounded'
 
 import dogService from '../services/dogService'
 import dogHelper from '../helpers/dogHelper'
@@ -58,18 +62,36 @@ export default function DogDetail(): ReactElement {
     navigate('/dogs')
   }
 
-  const mutation = useMutation((id: string) => dogService.remove(id), {
+  const mutation = useMutation((id: string) => dogService.del(id), {
     onSuccess: handleMutationSuccess,
   })
 
   const dog = useQuery(['dog', id], () => dogService.getById(id))
 
-  const handleDeleteDogClick = () => {
+  const handleDeleteClick = () => {
     mutation.mutate(id)
   }
 
+  const handleEditClick = useCallback(() => navigate('edit'), [navigate])
+
   const handleOpenDeleteDialog = () => setOpenDeleteDialog(true)
   const handleCloseDeleteDialog = () => setOpenDeleteDialog(false)
+
+  const actions = useMemo(
+    () => [
+      {
+        icon: <DeleteForeverRoundedIcon color="error" />,
+        name: 'Borrar',
+        onClick: handleOpenDeleteDialog,
+      },
+      {
+        icon: <EditRoundedIcon />,
+        name: 'Editar',
+        onClick: handleEditClick,
+      },
+    ],
+    [handleEditClick]
+  )
 
   if (dog.data) {
     const {
@@ -137,7 +159,9 @@ export default function DogDetail(): ReactElement {
               <ListItemIcon>
                 <CakeRoundedIcon />
               </ListItemIcon>
-              <ListItemText>{birthDate}</ListItemText>
+              <ListItemText>
+                {format(new Date(birthDate), 'dd/MM/yyyy')}
+              </ListItemText>
             </ListItem>
           )}
           {isSpayedOrNeutered !== null && (
@@ -195,15 +219,20 @@ export default function DogDetail(): ReactElement {
         )}
         {isCoordinator && (
           <>
-            <Fab
-              color="error"
-              aria-label="delete-dog"
-              onClick={handleOpenDeleteDialog}
-              size="large"
+            <SpeedDial
+              ariaLabel="dog-detail-speed-dial"
               sx={fabStyles}
+              icon={<SpeedDialIcon />}
             >
-              <DeleteForeverRoundedIcon fontSize="large" />
-            </Fab>
+              {actions.map((action) => (
+                <SpeedDialAction
+                  key={action.name}
+                  icon={action.icon}
+                  tooltipTitle={action.name}
+                  onClick={action.onClick}
+                />
+              ))}
+            </SpeedDial>
             <Dialog
               open={openDeleteDialog}
               onClose={handleCloseDeleteDialog}
@@ -219,7 +248,7 @@ export default function DogDetail(): ReactElement {
                 </DialogContentText>
               </DialogContent>
               <DialogActions>
-                <Button onClick={handleDeleteDogClick}>Borrar</Button>
+                <Button onClick={handleDeleteClick}>Borrar</Button>
               </DialogActions>
             </Dialog>
           </>

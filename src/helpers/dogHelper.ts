@@ -17,7 +17,9 @@ const getSizeText = (size: Size) => {
   }
 }
 
-const getIsSpayedOrNeutered = (isSpayedOrNeutered: IsSpayedOrNeutered) => {
+const getIsSpayedOrNeuteredBoolean = (
+  isSpayedOrNeutered: IsSpayedOrNeutered
+) => {
   switch (isSpayedOrNeutered) {
     case IsSpayedOrNeutered.Yes:
       return true
@@ -28,7 +30,18 @@ const getIsSpayedOrNeutered = (isSpayedOrNeutered: IsSpayedOrNeutered) => {
   }
 }
 
-const getIsCatFriendly = (isCatFriendly: IsCatFriendly) => {
+const getIsSpayedOrNeuteredEnum = (isSpayedOrNeutered: Boolean | null) => {
+  switch (isSpayedOrNeutered) {
+    case true:
+      return IsSpayedOrNeutered.Yes
+    case false:
+      return IsSpayedOrNeutered.No
+    default:
+      return IsSpayedOrNeutered.Null
+  }
+}
+
+const getIsCatFriendlyBoolean = (isCatFriendly: IsCatFriendly) => {
   switch (isCatFriendly) {
     case IsCatFriendly.Yes:
       return true
@@ -39,10 +52,23 @@ const getIsCatFriendly = (isCatFriendly: IsCatFriendly) => {
   }
 }
 
+const getIsCatFriendlyEnum = (isCatFriendly: Boolean | null) => {
+  switch (isCatFriendly) {
+    case true:
+      return IsCatFriendly.Yes
+    case false:
+      return IsCatFriendly.No
+    default:
+      return IsCatFriendly.Null
+  }
+}
+
 const dogHelper = {
   getSizeText,
-  getIsSpayedOrNeutered,
-  getIsCatFriendly,
+  getIsSpayedOrNeuteredBoolean,
+  getIsSpayedOrNeuteredEnum,
+  getIsCatFriendlyBoolean,
+  getIsCatFriendlyEnum,
 }
 
 export default dogHelper

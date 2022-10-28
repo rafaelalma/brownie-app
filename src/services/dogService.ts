@@ -65,7 +65,18 @@ const add = async (newDog: NewDog): Promise<Dog> => {
   return response.data
 }
 
-const remove = async (id: string) => {
+const update = async (id: string, newDog: NewDog): Promise<Dog> => {
+  const config = token
+    ? {
+        headers: { Authorization: token },
+      }
+    : {}
+
+  const response = await axiosInstance.put(`${endpoint}/${id}`, newDog, config)
+  return response.data
+}
+
+const del = async (id: string) => {
   const config = token
     ? {
         headers: { Authorization: token },
@@ -81,7 +92,8 @@ const dogService = {
   getAllGrouped,
   getById,
   add,
-  remove,
+  update,
+  del,
 }
 
 export default dogService

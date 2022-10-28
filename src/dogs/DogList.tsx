@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
 import TextField from '@mui/material/TextField'
 import Fab from '@mui/material/Fab'
-import AddIcon from '@mui/icons-material/Add'
+import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded'
 import { SelectChangeEvent } from '@mui/material'
 
 import { DogSortField } from '../types/dogType'
@@ -20,7 +20,7 @@ import { useUser } from '../context/AuthenticationContext'
 import userHelper from '../helpers/userHelper'
 import { DEBOUNCED_SEARCH_TIME } from '../constants'
 
-export default function DogGridSubview() {
+export default function DogList() {
   const user = useUser()
   const isCoordinator = userHelper.isCoordinator(user)
 
@@ -118,7 +118,7 @@ export default function DogGridSubview() {
           size="large"
           sx={fabStyles}
         >
-          <AddIcon fontSize="large" />
+          <AddCircleOutlineRoundedIcon fontSize="large" />
         </Fab>
       )}
     </>

@@ -18,7 +18,7 @@ export interface Dog {
   id: string
   name: string
   kennel: string | null
-  birthDate: string | null
+  birthDate: Date | null
   breed: string | null
   sex: Sex | null
   comments: string | null

@@ -1,6 +1,5 @@
 import React, { ReactElement, useState } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { format } from 'date-fns'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
 import OutlinedInput from '@mui/material/OutlinedInput'
@@ -196,22 +195,19 @@ export default function DogAddForm(): ReactElement {
   const handleDogSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const birthDateStringOrNull = birthDate
-      ? format(birthDate, 'dd/MM/yyyy')
-      : null
-
     const newDog: NewDog = {
       name,
       kennel,
-      birthDate: birthDateStringOrNull,
+      birthDate,
       breed,
       sex,
       comments,
-      isSpayedOrNeutered: dogHelper.getIsSpayedOrNeutered(isSpayedOrNeutered),
+      isSpayedOrNeutered:
+        dogHelper.getIsSpayedOrNeuteredBoolean(isSpayedOrNeutered),
       height,
       length,
       weight,
-      isCatFriendly: dogHelper.getIsCatFriendly(isCatFriendly),
+      isCatFriendly: dogHelper.getIsCatFriendlyBoolean(isCatFriendly),
       size,
       youtubeUrl,
     }
