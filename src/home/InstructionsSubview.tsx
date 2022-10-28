@@ -583,7 +583,7 @@ export default function InstructionsSubview(): ReactElement {
         fontWeight={500}
         gutterBottom
       >
-        Turno mañana
+        Turno tarde
         <br />
         23:00
       </Typography>
