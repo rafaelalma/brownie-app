@@ -5,20 +5,29 @@ import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import Typography from '@mui/material/Typography'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import Stack from '@mui/material/Stack'
+import Button from '@mui/material/Button'
 
 import dogService from '../services/dogService'
 import { Dog, DogGroupField } from '../types/dogType'
 import ErrorMessage from '../misc/ErrorMessage'
 import Loading from '../misc/Loading'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {
   searchField: string
 }
 
 export default function Kennels({ searchField }: Props): ReactElement {
+  const navigate = useNavigate()
+
   const dogs = useQuery(['dogs', searchField], () =>
     dogService.getAllGrouped(DogGroupField.Kennel, searchField)
   )
+
+  const navigateToDog = (id: string) => {
+    navigate(`/dogs/${id}`)
+  }
 
   if (dogs.data) {
     const entries: [string, Dog[]][] = Object.entries(dogs.data)
@@ -32,13 +41,19 @@ export default function Kennels({ searchField }: Props): ReactElement {
                 {entry[0]}
               </Typography>
             </AccordionSummary>
-            {entry[1].map((dog) => (
-              <AccordionDetails key={dog.id}>
-                <Typography variant="body2" textAlign="center">
-                  {dog.name}
-                </Typography>
-              </AccordionDetails>
-            ))}
+            <AccordionDetails>
+              <Stack>
+                {entry[1].map((dog) => (
+                  <Button
+                    key={dog.id}
+                    variant="text"
+                    onClick={() => navigateToDog(dog.id)}
+                  >
+                    {dog.name}
+                  </Button>
+                ))}
+              </Stack>
+            </AccordionDetails>
           </Accordion>
         ))}
       </>
