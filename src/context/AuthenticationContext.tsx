@@ -8,6 +8,7 @@ import {
 
 import { User } from '../types/userType'
 import dogService from '../services/dogService'
+import treatmentService from '../services/treatmentService'
 import { LOCAL_STORAGE_USER_KEY } from '../constants'
 
 const AuthenticationContext = createContext<
@@ -27,6 +28,7 @@ function AuthenticationProvider({ children }: { children: ReactNode }) {
       const loggedUser: User = JSON.parse(loggedUserJSON)
       setUser(loggedUser)
       dogService.setToken(loggedUser.token)
+      treatmentService.setToken(loggedUser.token)
     }
   }, [])
 

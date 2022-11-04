@@ -11,7 +11,7 @@ import DogEdit from './dogs/DogEdit'
 import KennelView from './kennels/KennelView'
 import KennelSubview from './kennels/KennelSubview'
 import TreatmentView from './treatments/TreatmentView'
-import TreatmentsSubview from './treatments/TreatmentsSubview'
+import TreatmentSubview from './treatments/TreatmentSubview'
 import ReportView from './reports/ReportView'
 import UnderConstruction from './misc/UnderConstruction'
 import NotFoundView from './misc/NotFoundView'
@@ -43,7 +43,7 @@ export default function AppRoutes(): ReactElement {
           <Route index element={<KennelSubview />} />
         </Route>
         <Route path="treatments" element={<TreatmentView />}>
-          <Route index element={<TreatmentsSubview />} />
+          <Route index element={<TreatmentSubview />} />
         </Route>
         <Route path="reports" element={<ReportView />}>
           <Route index element={<UnderConstruction />} />

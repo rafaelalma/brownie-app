@@ -14,6 +14,7 @@ import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded'
 import loginService from '../services/loginService'
 import { useSetUser } from '../context/AuthenticationContext'
 import dogService from '../services/dogService'
+import treatmentService from '../services/treatmentService'
 import { LOCAL_STORAGE_USER_KEY } from '../constants'
 import { dividerFormStyles } from '../styles'
 
@@ -58,6 +59,7 @@ export default function LoginForm(): ReactElement {
       window.localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(user))
       setUser(user)
       dogService.setToken(user.token)
+      treatmentService.setToken(user.token)
       setUsername('')
       setPassword('')
     } catch (error) {

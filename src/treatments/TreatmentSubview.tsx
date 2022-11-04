@@ -6,7 +6,7 @@ import ListItemText from '@mui/material/ListItemText'
 import Divider from '@mui/material/Divider'
 import LabelImportantRoundedIcon from '@mui/icons-material/LabelImportantRounded'
 import { getHours } from 'date-fns'
-import TreatmentsList from './TreatmentsList'
+import TreatmentList from './TreatmentList'
 
 import { dividerStyles } from '../styles'
 
@@ -14,7 +14,7 @@ const MIDDAY_HOUR = 15
 const STORE_MORNING_HOUR = 11
 const STORE_AFTERNOON_HOUR = 18
 
-export default function TreatmentsSubview(): ReactElement {
+export default function TreatmentSubview(): ReactElement {
   const today = new Date()
   const isMorning = getHours(today) < MIDDAY_HOUR
 
@@ -61,7 +61,7 @@ export default function TreatmentsSubview(): ReactElement {
         </ListItem>
       </List>
       <Divider variant="middle" sx={dividerStyles} />
-      <TreatmentsList />
+      <TreatmentList />
     </>
   )
 }
