@@ -6,7 +6,7 @@ import ListItemText from '@mui/material/ListItemText'
 import Divider from '@mui/material/Divider'
 import LabelImportantRoundedIcon from '@mui/icons-material/LabelImportantRounded'
 import { getHours } from 'date-fns'
-import TreatmentList from './TreatmentList'
+import TreatmentGrid from './TreatmentGrid'
 
 import { dividerStyles } from '../styles'
 
@@ -61,7 +61,7 @@ export default function TreatmentSubview(): ReactElement {
         </ListItem>
       </List>
       <Divider variant="middle" sx={dividerStyles} />
-      <TreatmentList />
+      <TreatmentGrid />
     </>
   )
 }
