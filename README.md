@@ -1,6 +1,12 @@
 # Brownie
 
-## What the project does
+Frontend code
+
+[Backend code](https://github.com/rafaelalma/brownie)
+
+[Deployment](https://brownie.fly.dev/)
+
+## What the project does
 
 App to list, create, update and delete dogs, their treatments and other useful information related to a module in a **dog shelter**
 
@@ -19,7 +25,7 @@ To kickstart the local project:
 To build the project in the build folder:
 `npm run build`
 
-## Where users can get help with your project
+## Where users can get help with your project
 
 [Issues](https://github.com/rafaelalma/brownie-app/issues)
 
