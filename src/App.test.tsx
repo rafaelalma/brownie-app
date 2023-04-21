@@ -1,10 +1,21 @@
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import { render, screen } from '@testing-library/react'
 
 import App from './App'
+import { AuthenticationProvider } from './context/AuthenticationContext'
+
+function Wrapper() {
+  return (
+    <AuthenticationProvider>
+      <HashRouter>
+        <App />
+      </HashRouter>
+    </AuthenticationProvider>
+  )
+}
 
 test('renders App title', () => {
-  render(<App />, { wrapper: BrowserRouter })
-  const home = screen.getByText(/inicio/i)
-  expect(home).toBeInTheDocument()
+  render(<App />, { wrapper: Wrapper })
+  const title = screen.getByRole('heading', { name: /módulo cachorros/i })
+  expect(title).toBeInTheDocument()
 })

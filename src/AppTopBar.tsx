@@ -34,6 +34,7 @@ export default function AppTopBar() {
             variant="h1"
             fontSize={24}
             fontWeight={500}
+            textAlign="center"
             sx={{ flexGrow: 1 }}
           >
             Módulo Cachorros
