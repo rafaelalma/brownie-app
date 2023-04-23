@@ -2,9 +2,9 @@ import { useEffect, useMemo, useState } from 'react'
 import debounce from 'lodash.debounce'
 import Paper from '@mui/material/Paper'
 import TextField from '@mui/material/TextField'
-import { paperStyles } from '../styles'
-import Kennels from './Kennels'
-import { DEBOUNCED_SEARCH_TIME } from '../constants'
+import { paperStyles } from '../styles.ts'
+import Kennels from './Kennels.tsx'
+import { DEBOUNCED_SEARCH_TIME } from '../constants.ts'
 
 export default function KennelSubview() {
   const [searchField, setSearchField] = useState('')
@@ -15,15 +15,12 @@ export default function KennelSubview() {
     setSearchField(event.target.value)
   }
 
-  const debouncedSearch = useMemo(() => {
-    return debounce(handleSearchFieldChange, DEBOUNCED_SEARCH_TIME)
-  }, [])
+  const debouncedSearch = useMemo(
+    () => debounce(handleSearchFieldChange, DEBOUNCED_SEARCH_TIME),
+    []
+  )
 
-  useEffect(() => {
-    return () => {
-      return debouncedSearch.cancel()
-    }
-  })
+  useEffect(() => () => debouncedSearch.cancel(), [debouncedSearch])
 
   return (
     <>

@@ -1,4 +1,5 @@
-import { IsCatFriendly, IsSpayedOrNeutered, Size } from '../types/dogType'
+/* eslint-disable consistent-return */
+import { IsCatFriendly, IsSpayedOrNeutered, Size } from '../types/dogType.ts'
 
 const getSizeText = (size: Size) => {
   switch (size) {

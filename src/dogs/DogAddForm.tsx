@@ -24,17 +24,14 @@ import {
   NewDog,
   Sex,
   Size,
-} from '../types/dogType'
-import { dividerFormStyles, alertStyles } from '../styles'
-import dogHelper from '../helpers/dogHelper'
-import dogService from '../services/dogService'
+} from '../types/dogType.ts'
+import { dividerFormStyles, alertStyles } from '../styles.ts'
+import dogHelper from '../helpers/dogHelper.ts'
+import dogService from '../services/dogService.ts'
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
-  props,
-  ref
-) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
-})
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
+  <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
+))
 
 export default function DogAddForm(): ReactElement {
   const [name, setName] = useState('')

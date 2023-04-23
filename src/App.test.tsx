@@ -1,8 +1,8 @@
 import { HashRouter } from 'react-router-dom'
 import { render, screen } from '@testing-library/react'
 
-import App from './App'
-import { AuthenticationProvider } from './context/AuthenticationContext'
+import App from './App.tsx'
+import { AuthenticationProvider } from './context/AuthenticationContext.tsx'
 
 function Wrapper() {
   return (

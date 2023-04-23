@@ -12,13 +12,13 @@ import Fab from '@mui/material/Fab'
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded'
 import { SelectChangeEvent } from '@mui/material'
 
-import { DogSortField } from '../types/dogType'
-import { SortOrder } from '../types/utilType'
-import DogGrid from './DogGrid'
-import { fabStyles, paperStyles } from '../styles'
-import { useUser } from '../context/AuthenticationContext'
-import userHelper from '../helpers/userHelper'
-import { DEBOUNCED_SEARCH_TIME } from '../constants'
+import { DogSortField } from '../types/dogType.ts'
+import { SortOrder } from '../types/utilType.ts'
+import DogGrid from './DogGrid.tsx'
+import { fabStyles, paperStyles } from '../styles.ts'
+import { useUser } from '../context/AuthenticationContext.tsx'
+import userHelper from '../helpers/userHelper.ts'
+import { DEBOUNCED_SEARCH_TIME } from '../constants.ts'
 
 export default function DogList() {
   const user = useUser()
@@ -44,15 +44,12 @@ export default function DogList() {
     setSearchField(event.target.value)
   }
 
-  const debouncedSearch = useMemo(() => {
-    return debounce(handleSearchFieldChange, DEBOUNCED_SEARCH_TIME)
-  }, [])
+  const debouncedSearch = useMemo(
+    () => debounce(handleSearchFieldChange, DEBOUNCED_SEARCH_TIME),
+    []
+  )
 
-  useEffect(() => {
-    return () => {
-      return debouncedSearch.cancel()
-    }
-  })
+  useEffect(() => () => debouncedSearch.cancel(), [debouncedSearch])
 
   const handleAddDogClick = () => {
     navigate('add')

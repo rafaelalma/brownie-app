@@ -1,4 +1,5 @@
 import { ReactElement } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
@@ -8,11 +9,10 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 
-import dogService from '../services/dogService'
-import { Dog, DogGroupField } from '../types/dogType'
-import ErrorMessage from '../misc/ErrorMessage'
-import Loading from '../misc/Loading'
-import { useNavigate } from 'react-router-dom'
+import dogService from '../services/dogService.ts'
+import { Dog, DogGroupField } from '../types/dogType.ts'
+import ErrorMessage from '../misc/ErrorMessage.tsx'
+import Loading from '../misc/Loading.tsx'
 
 type Props = {
   searchField: string

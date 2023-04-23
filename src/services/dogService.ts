@@ -1,6 +1,6 @@
-import axiosInstance from '../axiosInstance'
-import { Dog, DogGroupField, DogSortField, NewDog } from '../types/dogType'
-import { SortOrder } from '../types/utilType'
+import axiosInstance from '../axiosInstance.ts'
+import { Dog, DogGroupField, DogSortField, NewDog } from '../types/dogType.ts'
+import { SortOrder } from '../types/utilType.ts'
 
 let token: string | null = null
 

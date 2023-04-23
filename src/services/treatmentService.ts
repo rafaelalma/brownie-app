@@ -1,5 +1,5 @@
-import axiosInstance from '../axiosInstance'
-import { Treatment } from '../types/treatmentType'
+import axiosInstance from '../axiosInstance.ts'
+import { Treatment } from '../types/treatmentType.ts'
 
 let token: string | null = null
 

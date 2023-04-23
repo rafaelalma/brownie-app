@@ -1,5 +1,5 @@
-import axiosInstance from '../axiosInstance'
-import { Credentials, User } from '../types/userType'
+import axiosInstance from '../axiosInstance.ts'
+import { Credentials, User } from '../types/userType.ts'
 
 const endpoint = 'login'
 

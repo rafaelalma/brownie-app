@@ -29,15 +29,15 @@ import SpeedDialAction from '@mui/material/SpeedDialAction'
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded'
 import EditRoundedIcon from '@mui/icons-material/EditRounded'
 
-import dogService from '../services/dogService'
-import dogHelper from '../helpers/dogHelper'
-import { Sex } from '../types/dogType'
+import dogService from '../services/dogService.ts'
+import dogHelper from '../helpers/dogHelper.ts'
+import { Sex } from '../types/dogType.ts'
 import dogImage from './dogImage.jpg'
-import ErrorMessage from '../misc/ErrorMessage'
-import Loading from '../misc/Loading'
-import { useUser } from '../context/AuthenticationContext'
-import userHelper from '../helpers/userHelper'
-import { fabStyles } from '../styles'
+import ErrorMessage from '../misc/ErrorMessage.tsx'
+import Loading from '../misc/Loading.tsx'
+import { useUser } from '../context/AuthenticationContext.tsx'
+import userHelper from '../helpers/userHelper.ts'
+import { fabStyles } from '../styles.ts'
 
 export default function DogDetail(): ReactElement {
   const user = useUser()
@@ -46,7 +46,7 @@ export default function DogDetail(): ReactElement {
   const navigate = useNavigate()
 
   const params = useParams()
-  const id = params.id
+  const { id } = params
 
   if (!id) {
     throw new Error('route must have an id')
@@ -62,7 +62,7 @@ export default function DogDetail(): ReactElement {
     navigate('/dogs')
   }
 
-  const mutation = useMutation((id: string) => dogService.del(id), {
+  const mutation = useMutation((dogId: string) => dogService.del(dogId), {
     onSuccess: handleMutationSuccess,
   })
 
@@ -110,6 +110,16 @@ export default function DogDetail(): ReactElement {
       youtubeUrl,
     } = dog.data
 
+    let sexIcon: ReactElement | null = null
+    switch (sex) {
+      case Sex.Male:
+        sexIcon = <MaleRoundedIcon color="primary" />
+        break
+      case Sex.Female:
+        sexIcon = <FemaleRoundedIcon color="primary" />
+        break
+    }
+
     return (
       <>
         <Box sx={{ height: 358 }}>
@@ -140,13 +150,7 @@ export default function DogDetail(): ReactElement {
         </Stack>
         <List dense>
           <ListItem>
-            <ListItemIcon>
-              {sex === Sex.Male ? (
-                <MaleRoundedIcon color="primary" />
-              ) : sex === Sex.Female ? (
-                <FemaleRoundedIcon color="secondary" />
-              ) : null}
-            </ListItemIcon>
+            <ListItemIcon>{sexIcon}</ListItemIcon>
             <ListItemText>{breed}</ListItemText>
           </ListItem>
           {size && (

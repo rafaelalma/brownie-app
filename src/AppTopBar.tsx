@@ -6,8 +6,8 @@ import IconButton from '@mui/material/IconButton'
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded'
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded'
 
-import { useSetUser } from './context/AuthenticationContext'
-import { LOCAL_STORAGE_USER_KEY } from './constants'
+import { useSetUser } from './context/AuthenticationContext.tsx'
+import { LOCAL_STORAGE_USER_KEY } from './constants.ts'
 
 export default function AppTopBar() {
   const setUser = useSetUser()

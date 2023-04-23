@@ -1,0 +1,13 @@
+{
+  "extends": ["airbnb", "react-app", "plugin:react/jsx-runtime", "prettier"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "react/jsx-filename-extension": [2, { "extensions": [".jsx", ".tsx"] }],
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": "warn",
+    "import/prefer-default-export": "off",
+    "react/jsx-props-no-spreading": "off",
+    "import/no-extraneous-dependencies": "off"
+  }
+}

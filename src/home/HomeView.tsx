@@ -2,7 +2,7 @@ import { ReactElement } from 'react'
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
 
-import InstructionsSubview from './InstructionsSubview'
+import InstructionsSubview from './InstructionsSubview.tsx'
 
 export default function HomeView(): ReactElement {
   return (

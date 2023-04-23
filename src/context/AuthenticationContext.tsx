@@ -3,13 +3,14 @@ import {
   ReactNode,
   useContext,
   useEffect,
+  useMemo,
   useState,
 } from 'react'
 
-import { User } from '../types/userType'
-import dogService from '../services/dogService'
-import treatmentService from '../services/treatmentService'
-import { LOCAL_STORAGE_USER_KEY } from '../constants'
+import { User } from '../types/userType.ts'
+import dogService from '../services/dogService.ts'
+import treatmentService from '../services/treatmentService.ts'
+import { LOCAL_STORAGE_USER_KEY } from '../constants.ts'
 
 const AuthenticationContext = createContext<
   | {
@@ -32,7 +33,13 @@ function AuthenticationProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
-  const value = { user, setUser }
+  const value = useMemo(
+    () => ({
+      user,
+      setUser,
+    }),
+    [user]
+  )
   return (
     <AuthenticationContext.Provider value={value}>
       {children}

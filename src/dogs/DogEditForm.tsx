@@ -23,10 +23,10 @@ import {
   NewDog,
   Sex,
   Size,
-} from '../types/dogType'
-import dogHelper from '../helpers/dogHelper'
-import { dividerFormStyles } from '../styles'
-import dogService from '../services/dogService'
+} from '../types/dogType.ts'
+import dogHelper from '../helpers/dogHelper.ts'
+import { dividerFormStyles } from '../styles.ts'
+import dogService from '../services/dogService.ts'
 
 type Props = {
   dog: Dog

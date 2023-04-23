@@ -17,13 +17,16 @@ It will the volunteers and coordinator of the module in the day to day operation
 ## Scripts
 
 To run the tests:
-`npm run test`
+`npm test`
 
 To kickstart the local project:
 `npm start`
 
 To build the project in the build folder:
 `npm run build`
+
+To preview the built project:
+`npm run serve`
 
 ## Where to get help and report bugs and issues
 

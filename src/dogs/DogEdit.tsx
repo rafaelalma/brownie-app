@@ -5,19 +5,19 @@ import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import Box from '@mui/material/Box'
 
-import dogService from '../services/dogService'
-import { useUser } from '../context/AuthenticationContext'
-import userHelper from '../helpers/userHelper'
-import ErrorMessage from '../misc/ErrorMessage'
-import Loading from '../misc/Loading'
-import DogEditForm from './DogEditForm'
+import dogService from '../services/dogService.ts'
+import { useUser } from '../context/AuthenticationContext.tsx'
+import userHelper from '../helpers/userHelper.ts'
+import ErrorMessage from '../misc/ErrorMessage.tsx'
+import Loading from '../misc/Loading.tsx'
+import DogEditForm from './DogEditForm.tsx'
 
 export default function DogEdit(): ReactElement {
   const user = useUser()
   const isCoordinator = userHelper.isCoordinator(user)
 
   const params = useParams()
-  const id = params.id
+  const { id } = params
 
   if (!id) {
     throw new Error('route must have an id')

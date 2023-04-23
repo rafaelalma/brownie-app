@@ -6,9 +6,9 @@ import ListItemText from '@mui/material/ListItemText'
 import Divider from '@mui/material/Divider'
 import LabelImportantRoundedIcon from '@mui/icons-material/LabelImportantRounded'
 import { getHours } from 'date-fns'
-import TreatmentGrid from './TreatmentGrid'
+import TreatmentGrid from './TreatmentGrid.tsx'
 
-import { dividerStyles } from '../styles'
+import { dividerStyles } from '../styles.ts'
 
 const MIDDAY_HOUR = 15
 const STORE_MORNING_HOUR = 11

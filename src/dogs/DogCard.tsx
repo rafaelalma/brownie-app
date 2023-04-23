@@ -9,7 +9,7 @@ import Chip from '@mui/material/Chip'
 import BorderAllRoundedIcon from '@mui/icons-material/BorderAllRounded'
 import Box from '@mui/material/Box'
 
-import { Dog } from '../types/dogType'
+import { Dog } from '../types/dogType.ts'
 import dogImage from './dogImage.jpg'
 
 type Props = {

@@ -11,12 +11,12 @@ import LockOpenRoundedIcon from '@mui/icons-material/LockOpenRounded'
 import VisibilityOffRoundedIcon from '@mui/icons-material/VisibilityOffRounded'
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded'
 
-import loginService from '../services/loginService'
-import { useSetUser } from '../context/AuthenticationContext'
-import dogService from '../services/dogService'
-import treatmentService from '../services/treatmentService'
-import { LOCAL_STORAGE_USER_KEY } from '../constants'
-import { dividerFormStyles } from '../styles'
+import loginService from '../services/loginService.ts'
+import { useSetUser } from '../context/AuthenticationContext.tsx'
+import dogService from '../services/dogService.ts'
+import treatmentService from '../services/treatmentService.ts'
+import { LOCAL_STORAGE_USER_KEY } from '../constants.ts'
+import { dividerFormStyles } from '../styles.ts'
 
 export default function LoginForm(): ReactElement {
   const [username, setUsername] = useState('')
@@ -63,6 +63,7 @@ export default function LoginForm(): ReactElement {
       setUsername('')
       setPassword('')
     } catch (error) {
+      // eslint-disable-next-line no-console
       if (error instanceof Error) console.error(error.message)
     }
   }

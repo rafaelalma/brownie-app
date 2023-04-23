@@ -1,8 +1,8 @@
 import { ReactElement } from 'react'
+import { Typography } from '@mui/material'
 import Container from '@mui/material/Container'
 
-import LoginForm from './LoginForm'
-import { Typography } from '@mui/material'
+import LoginForm from './LoginForm.tsx'
 
 export default function LoginView(): ReactElement {
   return (

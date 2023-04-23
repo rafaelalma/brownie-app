@@ -9,7 +9,7 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import LabelImportantRoundedIcon from '@mui/icons-material/LabelImportantRounded'
 
-import { dividerStyles } from '../styles'
+import { dividerStyles } from '../styles.ts'
 
 const nestedListStyle = {
   listStyle: 'lower-alpha',

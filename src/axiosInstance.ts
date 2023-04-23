@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios'
-import { LOCAL_STORAGE_USER_KEY } from './constants'
+import { LOCAL_STORAGE_USER_KEY } from './constants.ts'
 
 const axiosInstance = axios.create({
   baseURL: '/api/',
@@ -7,9 +7,7 @@ const axiosInstance = axios.create({
 })
 
 axiosInstance.interceptors.response.use(
-  (response) => {
-    return response
-  },
+  (response) => response,
   (error: AxiosError) => {
     if (error && error.response) {
       if (error.response.status === 401) {

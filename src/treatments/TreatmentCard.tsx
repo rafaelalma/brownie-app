@@ -11,7 +11,7 @@ import ListItemText from '@mui/material/ListItemText'
 import Box from '@mui/material/Box'
 import { SxProps } from '@mui/material'
 
-import { Treatment } from '../types/treatmentType'
+import { Treatment } from '../types/treatmentType.ts'
 
 type Props = {
   treatment: Treatment
@@ -25,13 +25,14 @@ const listStyle: SxProps = {
 const getStepText = (medication: string | null, description: string | null) => {
   if (medication && description) {
     return `${medication}: ${description}`
-  } else if (medication) {
-    return medication
-  } else if (description) {
-    return description
-  } else {
-    return ''
   }
+  if (medication) {
+    return medication
+  }
+  if (description) {
+    return description
+  }
+  return ''
 }
 
 export default function TreatmentCard({ treatment }: Props): ReactElement {
